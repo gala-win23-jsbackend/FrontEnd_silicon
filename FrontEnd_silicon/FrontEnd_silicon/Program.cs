@@ -62,7 +62,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options =>
     .AddSignInManager()
     .AddDefaultTokenProviders();
 
-builder.Services.AddSingleton(s => new GraphQLHttpClient("POPRAVIhttps://courseprovider-silicon.azurewebsites.net/api/graphql?code=u3D", new SystemTextJsonSerializer()));
+builder.Services.AddSingleton(s => new GraphQLHttpClient("", new SystemTextJsonSerializer()));
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 builder.Services.AddSignalR();
 
