@@ -1,22 +1,26 @@
 ﻿@page "/contact"
 @using System.ComponentModel.DataAnnotations
+@inject HttpClient Http
+
 
 <section class="contact">
     <div class="container">
-        <div class="home-contact">
-            <a class="home-and-contact" asp-controller="Default" asp-action="Home">
 
+        
+
+        <div class="home-course">
+            <NavLink class="home-and-course" href="/">
                 <i class="fa-solid fa-house"></i>
                 <p class="home">Home</p>
-            </a>
+            </NavLink>
 
             <i class="fa-solid fa-angles-right"></i>
-            <p class="contact">Contact</p>
+            <p class="courses">Courses</p>
         </div>
 
         <div class="contact-info">
             <h1>Contact Us</h1>
-
+            
             <div class="email-us">
                 <div class="email-icone">
                     <div class="round">
@@ -50,51 +54,37 @@
             <div class="get-in-contact-form">
 
                 <h2>Get In Contact With Us</h2>
-              
+                <p>Under construction</p>
 
-                @if (!string.IsNullOrEmpty(errorMessage))
+                @if (!string.IsNullOrEmpty(@StatusMessage))
                 {
-                    <div class="alert alert-danger">
-                        @errorMessage
+                    <div class="alert alert-danger" role="alert">
+                        @StatusMessage
                     </div>
                 }
 
 
-                 <div class="contact-form">
-                    <form method="post" novalidate>
-                        <div class="form-group">
+             <div class="contact-form">
+                <EditForm method="post" FormName="Form" Model="ContactForm" OnValidSubmit="OnValidSubmit" novalidate>
+                <DataAnnotationsValidator />
+                    <div class="form-group">
 
-                            <div id="contact-fullname" class="input-group">
-                                <label asp-for="Form.FullName">Full Name</label>
-                                <span asp-validation-for="Form.FullName"> </span>
-                                <input asp-for="Form.FullName" />
-                            </div>
+                        <div id="contact-fullname" class="input-group">
+                            <label >Full Name</label>
+                            <InputText @bind-Value="ContactForm.FullName" autocomplete="surname" aria-required="true" />
+                            <ValidationMessage For="() => ContactForm.FullName" />
+                
+                        </div>
 
-                            <div id="contact-email" class="input-group">
-                                <label asp-for="Form.Email"></label>
-                                <span asp-validation-for="Form.Email"> </span>
-                                <input asp-for="Form.Email" />
-                            </div>
+                        <div id="contact-email" class="input-group">
+                            <label >Email</label>               
+                            <InputText @bind-Value="ContactForm.Email" autocomplete="email" aria-required="true" />
+                            <ValidationMessage For="() => ContactForm.Email" />
+                        </div>
 
-                           @*  <div class="lable">
-                                <label >Service (optional)</label>
-                                <i class="fa-solid fa-angle-down"></i>
-                            </div>
-
-                            <select class="form-control" id="service" name="Form.SelectedService">
-
-                                <option value="default">Choose the service you are interested in</option>
-                                <option value="frontend-development">Frontend Development</option>
-                                <option value="app-development">App Development</option>
-                                <option value="design">Design</option>
-                                <option value="phyton">Phyton Development</option>
-                                <option value="game-development">Game Development</option>
-                                <option value="other">Other</option>
-                            </select> *@
-
+           
+                        <label>Service (optional)</label>
                             <select @bind="@value" class="form-select" data-control="select2" data-placeholder="Select an option">
-                                <option></option>
-                               
                                 <option value="1">Choose the service you are interested in</option>
                                 <option value="2">Frontend Development</option>
                                 <option value="3">App Development</option>
@@ -106,18 +96,18 @@
 
 
 
-                            <div id="contact-message" class="input-group">
-                                <label >Message</label>
-                               
-                                <textarea asp-for="Form.Message" class="form-control" rows="5" placeholder="Enter your message"></textarea>
-                            </div>
-
-
-
-                            <button type="submit" class="btn-theme">Send Contact Request</button>
+                        <div id="contact-message" class="input-group">
+                             <label >Message</label>
+                             <textarea @bind="Description" @bind:event="oninput"  rows="5" placeholder="Enter your message"></textarea>
                         </div>
-                    </form>
-                </div>
+
+
+
+            <button type="submit" class="btn-theme">Send Contact Request</button>
+        </div>
+    </EditForm>
+</div>
+
             </div>
         </div>
 
@@ -138,13 +128,22 @@
 
 @code {
 
-    private string? errorMessage;
+    [SupplyParameterFromQuery]
+    public string? StatusMessage { get; set; } = "";
+
+    private string value { get; set; } = null!;
+    private void onChange(ChangeEventArgs e) => value = e.Value!.ToString()!;
+    public string Description { get; set; } = string.Empty;
 
     public class ContactViewModel
     {
         public string Title { get; set; } = "Contact Us";
         public ContactModel Form { get; set; } = new ContactModel();
     }
+
+    public ContactModel ContactForm { get; set; } = new ContactModel();
+
+
     public class ContactModel
     {
         [DataType(DataType.Text)]
@@ -169,12 +168,33 @@
         public string Message { get; set; } = null!;
     }
 
+    private async Task OnValidSubmit()
+    {
 
+        try
+        { //här kanske man måste skapa nåt provider för att läsa meddelande
+            var result = await Http.PostAsJsonAsync("https://newsletters-g.azurewebsites.net/api/", ContactForm);
+            if (result.IsSuccessStatusCode)
+            {
+                StatusMessage = "Thank you for your message!";
+            }
+            else
+            {
+                StatusMessage = "Unable to send message";
+            }
+        }
+        catch
+        {
+
+            StatusMessage = "An error occurred while sending.";
+
+        }
+
+        
+
+    }
     
-        private string value { get; set; } = null!;
-
-
-        private void onChange(ChangeEventArgs e) => value = e.Value!.ToString()!;
+       
     
 
 }

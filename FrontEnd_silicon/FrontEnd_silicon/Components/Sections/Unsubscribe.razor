@@ -1,0 +1,94 @@
+﻿@page "/unsubscribe"
+@using FrontEnd_silicon.Components.Account
+@using Microsoft.AspNetCore.Identity
+@using FrontEnd_silicon.Data
+
+@using System.ComponentModel.DataAnnotations
+@inject UserManager<ApplicationUser> UserManager
+@inject IEmailSender<ApplicationUser> EmailSender
+@inject NavigationManager NavigationManager
+@inject IdentityRedirectManager RedirectManager
+@inject HttpClient Http
+
+@rendermode InteractiveServer
+
+
+
+<div class="container">
+    <h2>Unsubscribe from Newsletters</h2>
+    @if (!string.IsNullOrEmpty(@StatusMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @StatusMessage
+        </div>
+    }
+
+    <EditForm   method="post" Model="UnsubscribeForm" OnValidSubmit="OnValidSubmit" novalidate>
+        <div class="content-email">
+            <div class="email">
+                <div id="form-email" class="input-group">
+                    <label >Subscriber's email</label>
+
+                    <InputText @bind-Value="UnsubscribeForm.Email" autocomplete="email" aria-required="true" />
+                    <ValidationMessage For="() => UnsubscribeForm.Email" />
+                </div>
+                <button id="form-submit" type="submit" class="btn-theme mt-3">Unsubscribe</button>
+            </div>
+        </div>
+    </EditForm>
+
+    <span class="d-flex align-items-center justify-content-center">
+
+
+
+        
+
+    </span>
+</div>
+
+@code {
+    [SupplyParameterFromQuery]
+    public string? StatusMessage { get; set; } = "";
+
+    [SupplyParameterFromForm]
+    public UnsubscriberViewModel UnsubscribeForm { get; set; } = new UnsubscriberViewModel();
+
+    public class UnsubscriberViewModel
+    {
+        [Display(Prompt = "Enter your email", Order = 0)]
+        [DataType(DataType.EmailAddress)]
+        [Required(ErrorMessage = "Email is required")]
+        [RegularExpression(@"^(?=.*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$",
+        ErrorMessage = "The email format is not valid.")]
+        public string Email { get; set; } = null!;
+    }
+
+
+    private async Task OnValidSubmit()
+    {
+
+        try
+        {
+            var result = await Http.PostAsJsonAsync("https://newsletters-g.azurewebsites.net/api/Unsubscribe?code=LSf1hB-5ZADBU0s1YwFuGgj0MDt1CY0Jd6ZnH2O47wI8AzFuJfjtfg%3D%3D", UnsubscribeForm);
+            if (result.IsSuccessStatusCode)
+            {
+                StatusMessage = "You was unsubscribed successfully!";
+                NavigationManager.NavigateTo("/");
+
+            }
+            else
+            {
+                StatusMessage = "Unable to unsubscribe right now";
+            }
+        }
+        catch
+        {
+
+            StatusMessage = "An error occurred while unsubscribing.";
+
+        }
+
+        
+
+    }
+}

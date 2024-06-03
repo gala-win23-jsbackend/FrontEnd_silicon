@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using FrontEnd_silicon.Data
+@inherits LayoutComponentBase
 @layout FrontEnd_silicon.Components.Layout.MainLayout
 @inject NavigationManager NavigationManager
 
@@ -12,6 +13,9 @@ else
 }
 
 @code {
+    [CascadingParameter]
+    public ApplicationUser user { get; set; } = null!;
+
     [CascadingParameter]
     private HttpContext? HttpContext { get; set; }
 

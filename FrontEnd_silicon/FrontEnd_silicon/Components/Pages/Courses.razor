@@ -1,5 +1,327 @@
-﻿<h3>Courses</h3>
+﻿@page "/courses"
+
+@using FrontEnd_silicon.Components.GraphQl
+@using FrontEnd_silicon.Data
+@using FrontEnd_silicon.Services
+@using FrontEnd_silicon.Models
+@using Microsoft.AspNetCore.Authorization
+@using System.Text.Json
+
+
+@rendermode InteractiveServer
+@attribute [StreamRendering]
+@attribute [Authorize]
+
+@inject UserDataService UserDataService
+@inject CourseService CourseService
+@inject HttpClient Http
+
+<section class="courses">
+    <div class="container">
+         @if (!string.IsNullOrEmpty(statusMessage))
+        {
+            <p>@statusMessage</p>
+        }
+
+        <div class="home-course">
+            <NavLink class="home-and-course" href="/">
+                <i class="fa-solid fa-house"></i>
+                <p class="home">Home</p>
+            </NavLink>
+
+            <i class="fa-solid fa-angles-right"></i>
+            <p class="courses">Courses</p>
+        </div>
+
+        <div class="table">
+            <div class="header">
+                <h1 class="my5">Courses</h1>
+            </div>
+
+            <div class="filters">
+
+                <div class="browse-and-search">
+                    
+
+                    <div class="input-search-group">
+                        <input id="searchQuery" class="input-group-text" name="searchQuery" placeholder="Search courses" />
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+
+        @if(courses == null)
+        {
+            <div><i class="fa-solid fa-spinner"></i>No coursesfound yet. Please wait...</div>
+
+        }
+        else
+        {
+            <div class="grid">
+                @foreach (var course in courses)
+                {
+                    var removeCourseModel = new UserCourses { UserId = user.Id, CourseId = course.Id! };
+                    var joinCourseModel = new UserCourses { UserId = user.Id, CourseId = course.Id! };
+
+                    bool isBookmarked = false;
+                    var link = $"courses/details/{course.Id}";
+                    <div class="course">
+                        @if (course.IsBestseller)
+                        {
+                            <div class="best-seller">Best Seller</div>
+
+
+                        }
+
+                        @if (userCourse != null)
+                        {
+                            foreach (var courseId in userCourse)
+                            {
+                                if (course.Id == courseId.CourseId)
+                                {
+                                    isBookmarked = true;
+                                }
+                            };
+                        }
+
+                        @if (isBookmarked)
+                        {
+                            <EditForm Model="removeCourseModel" FormName="removecourse" OnValidSubmit="@(() => RemoveUserCourse(removeCourseModel))" novalidate>
+                                <InputText type="hidden" @bind-Value="@user.Id" />
+                                <InputText type="hidden" @bind-Value="@course.Id" />
+                                <button type="submit" class="saved-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove">
+                                    <i class="fa-solid fa-bookmark"></i>
+                                </button>
+                            </EditForm>
+                        }
+                        else
+                        {
+                            <EditForm Model="joinCourseModel" FormName="joincourse" OnValidSubmit="@(() => JoinUserCourse(joinCourseModel))" novalidate>
+                                <InputText type="hidden" @bind-Value="@user.Id" />
+                                <InputText type="hidden" @bind-Value="@course.Id" />
+                                <button type="submit" class="saved-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </button>
+                            </EditForm>
+                        }
+
+
+
+                        <div> <img class="course-image" src="@course.ImageUri" /></div>
+                        <a class="course-details" href="@link">
+                            <div class="info">
+                                <h2 class="course-title">@course.Title</h2>
+                                <p class="course-creator">by @course.Author</p>
+                                <div class="course-prices">
+                                    @if (course.DiscountPrice > 0)
+                                    {
+                                        <div class="discount-price">$@course.DiscountPrice</div>
+                                        <div class="original-price discount">$@course.Price</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="original-price">$@course.Price</div>
+                                    }
+
+                                </div>
+
+                                <hr />
+                                <div class="course-footer">
+                                    <div class="course-hours"><i class="fa-regular fa-clock"></i> @course.Hours</div>
+                                    <div class="course-likes">
+                                        <i class="fa-regular fa-thumbs-up"></i>
+                                        <span>@course.LikesInProcent</span>
+                                        <span>(@course.LikesInNumbers)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        }
+
+       
+
+        <div class="hero">
+            <div class="hero-text">
+                <p class="text-l">Ready to get started?</p>
+                <div>
+                    <div class="skills-text"><h2 class="h2">Take Your </h2><h2 class="h2 blue" id="blue"> Skills </h2> <h2 class="h2">to the</h2></div><div><h2 class="h2"> Next Level</h2></div>
+                </div>
+                <a class="btn-theme" href="#">Work with us</a>
+            </div>
+            <div class="hero-img">
+
+                <img src="images/courses/illustration.svg" alt="banner-illustration" id="illustration">
+            </div>
+        </div>
+
+
+
+
+    </div>
+</section>
+
+
+
+
+
 
 @code {
+    private string statusMessage = string.Empty;
+
+    private List<CourseCardModel>? courses;
+
+    public List<UserCourses> userCourse = new List<UserCourses>();
+
+    [CascadingParameter]
+    public ApplicationUser user { get; set; } = new ApplicationUser();
+
+
+    public async Task RemoveUserCourse(UserCourses removeUserCourse)
+    {
+        var response = await CourseService.RequestRemoveUserCourseAsync(removeUserCourse);
+        if (response)
+        {
+            statusMessage = "Course removed";
+            StateHasChanged();
+        }
+        else
+        {
+            statusMessage = "Failed to remove course";
+        }
+    }
+
+    public async Task JoinUserCourse(UserCourses addUserCourse)
+    {
+        var response = await CourseService.RequestCreateUserCoursesAsync(addUserCourse);
+        if (response != null)
+        {
+            statusMessage = "Course added to your courses";
+            StateHasChanged();
+        }
+        else
+        {
+            statusMessage = "Failed to add course";
+        }
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            user = await UserDataService.GetUserDataAsync();
+            if (user != null)
+            {
+                var userCourseIdsResponse = await CourseService.GetUserCourseIdsAsync(user.Id);
+                if (userCourseIdsResponse != null)
+                {
+                    foreach (var courseId in userCourseIdsResponse)
+                    {
+                        userCourse.Add(new UserCourses { UserId = user.Id, CourseId = courseId });
+                    };
+
+                    var query = new GraphQLQuery
+                        {
+                            Query = "{getCourses {id imageUri isDigital isBestseller likes hours likesInProcent isBookmarked title authors{name} prices {price discount}}}"
+                        };
+
+                    var response = await Http.PostAsJsonAsync("https://courseprovider-silicon-camilla.azurewebsites.net/api/graphql?code=LL18Cb5IbCut7M9hw0bCm5RFI7hOjOJwHOmU6-Dyd1TXAzFuSGQ4FA%3D%3D", query);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadFromJsonAsync<GraphQLResponse>();
+
+                        if (result?.Data.TryGetProperty("getCourses", out var coursesElement) == true)
+                        {
+                            courses = coursesElement.EnumerateArray().Select(course =>
+                            {
+                                var courseModel = new CourseCardModel();
+
+                                if (course.TryGetProperty("id", out var idElement))
+                                {
+                                    courseModel.Id = idElement.GetString();
+                                }
+                                if (course.TryGetProperty("title", out var titleElement))
+                                {
+                                    courseModel.Title = titleElement.GetString();
+                                }
+                                if (course.TryGetProperty("isBestseller", out var isBestsellerElement))
+                                {
+                                    courseModel.IsBestseller = isBestsellerElement.GetBoolean();
+                                }
+                                if (course.TryGetProperty("isBookmarked", out var isBookmarkedElement))
+                                {
+                                    courseModel.IsBookmarked = isBookmarkedElement.ValueKind != JsonValueKind.Null ? isBookmarkedElement.GetBoolean() : (bool?)null;
+                                }
+                                if (course.TryGetProperty("isDigital", out var isDigitalElement))
+                                {
+                                    courseModel.IsDigital = isDigitalElement.GetBoolean();
+                                }
+                                if (course.TryGetProperty("likesInProcent", out var likesInProcentElement))
+                                {
+                                    courseModel.LikesInProcent = likesInProcentElement.GetString();
+                                }
+                                if (course.TryGetProperty("likes", out var likesElement))
+                                {
+                                    courseModel.LikesInNumbers = likesElement.GetString();
+                                }
+                                if (course.TryGetProperty("hours", out var hoursElement))
+                                {
+                                    courseModel.Hours = hoursElement.GetString();
+                                }
+                                if (course.TryGetProperty("authors", out var authorsElement) && authorsElement.GetArrayLength() > 0)
+                                {
+                                    courseModel.Author = authorsElement[0].GetProperty("name").GetString();
+                                }
+                                if (course.TryGetProperty("prices", out var pricesElement))
+                                {
+                                    if (pricesElement.TryGetProperty("price", out var priceElement))
+                                    {
+                                        courseModel.Price = priceElement.GetDecimal();
+                                    }
+                                    if (pricesElement.TryGetProperty("discount", out var discountElement))
+                                    {
+                                        courseModel.DiscountPrice = discountElement.GetDecimal();
+                                    }
+                                }
+                                if (course.TryGetProperty("imageUri", out var imageUriElement))
+                                {
+                                    courseModel.ImageUri = imageUriElement.GetString();
+                                }
+
+                                return courseModel;
+                            }).ToList();
+                        }
+                        else
+                        {
+                            Console.WriteLine("getCourses saknas i JSON-svaret.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine($"HTTP-förfrågan misslyckades med statuskod: {response.StatusCode}");
+                    }
+
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Ett fel inträffade: {ex.Message}");
+        }
+    }
+
+
+
 
 }

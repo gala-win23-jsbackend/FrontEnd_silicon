@@ -44,13 +44,13 @@
 
             <div class="form-content">
                 <div id="form-firstname" class="input-group">
-                    <label>FirstName</label>
+                    <label>First Name</label>
                     <InputText @bind-Value="SignUpForm.FirstName" autocomplete="givenname" aria-required="true" />
                     <ValidationMessage For="() => SignUpForm.FirstName" />
                 </div>
 
                 <div id="form-lastname" class="input-group">
-                    <label>LastName</label>
+                    <label>Last Name</label>
                     <InputText @bind-Value="SignUpForm.LastName" autocomplete="surname" aria-required="true" />
                     <ValidationMessage For="() => SignUpForm.LastName" />
                 </div>
@@ -68,7 +68,7 @@
                 </div>
 
                 <div id="form-confirm" class="input-group">
-                    <label>ConfirmPassword</label>
+                    <label>Confirm Password</label>
                     <InputText type="password" @bind-Value="SignUpForm.ConfirmPassword" autocomplete="confirm" aria-required="true" />
                     <ValidationMessage For="() => SignUpForm.ConfirmPassword" />
                 </div>

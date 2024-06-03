@@ -4,31 +4,33 @@
     .container {
         position: relative;
 
-        .home-contact {
+        .home-course {
             display: flex;
             justify-content: start;
             align-items: center;
             gap: 1rem;
 
-            .home-and-contact {
+            .home-and-course {
                 display: flex;
                 justify-content: start;
                 align-items: center;
                 gap: 0.5rem;
 
                 .fa-house {
-                    color: $gray-600;
+                    color: $gray-700;
                 }
 
                 .home {
-                    color: $gray-600;
+                    color: $gray-700;
                     margin-bottom: 0;
                 }
 
                 &:hover {
+                    border-radius: 5px;
+
                     .home,
                     .fa-house {
-                        color: $black;
+                        color: $gray-300 !important;
                     }
 
                     text-decoration: none;
@@ -40,7 +42,7 @@
                 color: $gray-600;
             }
 
-            .contact {
+            .courses {
                 color: $theme;
                 margin-bottom: 0;
             }
@@ -136,6 +138,9 @@
                 margin-left: 1rem;
             }
 
+            p{
+                margin-left:20px;
+            }
             .contact-form {
                 padding: 1rem;
 
@@ -156,7 +161,11 @@
                         }
                     }
 
-                    .lable {
+                    #contact-email{
+                        margin-bottom:2rem;
+                    }
+                    
+                    .label {
                         color: $gray-900;
                         margin-top: 2rem;
                         position: relative;

@@ -53,7 +53,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedAccount = true;
     options.User.RequireUniqueEmail = true;
     options.Password.RequiredLength = 6;
 })
@@ -62,7 +62,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options =>
     .AddSignInManager()
     .AddDefaultTokenProviders();
 
-builder.Services.AddSingleton(s => new GraphQLHttpClient("https://courseprovider-silicon.azurewebsites.net/api/graphql?code=u3D", new SystemTextJsonSerializer()));
+builder.Services.AddSingleton(s => new GraphQLHttpClient("POPRAVIhttps://courseprovider-silicon.azurewebsites.net/api/graphql?code=u3D", new SystemTextJsonSerializer()));
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 builder.Services.AddSignalR();
 

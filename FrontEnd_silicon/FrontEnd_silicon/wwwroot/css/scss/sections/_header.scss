@@ -1,6 +1,6 @@
 .header {
     padding: 1rem 0 1rem 1rem;
-    height: 60vh;
+    height: 62vh;
 
 
     @include lg {
@@ -10,7 +10,7 @@
 
     .container {
         display: grid;
-        align-items: center;
+        align-items: center !important;
         grid-template-columns: 1fr auto auto;
         grid-template-areas: "logo switch mobile" "menu menu menu" "buttons buttons buttons";
 
@@ -30,6 +30,7 @@
         #menu {
             grid-area: menu;
             display: block;
+            align-items: center !important;
             margin-bottom: 15px;
             margin-top: 50px;
             z-index: 20;
@@ -42,8 +43,13 @@
 
             nav {
                 display: none;
-                justify-content: center;
+                justify-content: flex-start !important;
+                align-items: center !important;
                 gap: 2rem;
+                margin-top: auto;
+                margin-bottom: 0 !important;
+                position: relative;
+                z-index: 20;
 
                 @include xl {
                     display: flex;
@@ -119,9 +125,9 @@
         flex-direction: column;
         gap: 15px;
         align-items: center;
-        background-color: var(--white);
+        background-color: $white;
         margin-bottom: 30px;
-
+        margin-top: -60px;
 
 
         .account-buttons {

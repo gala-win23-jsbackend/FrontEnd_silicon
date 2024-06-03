@@ -67,25 +67,20 @@
                             <InputText @bind-Value="SubscribeForm.Email" placeholder='Enter your email' />
 
                         </div>
-                        <button id="form-submit" type="submit" class="btn-theme">Subscribe</button>
+                        <button id="form-submit" type="submit" class="btn-theme">Subscribe*</button>
                     </div>
-                    <ValidationMessage For="@(() => SubscribeForm.Email)" />
+
 
                     <div class="terms">
-                        <ValidationMessage For="@(() => SubscribeForm.Email)" class="alert-danger-pop" />
-                        <p><a href="/unsubscribe">Unsubscribe</a></p>
+                        <ValidationMessage For="@(() => SubscribeForm.Email)"  />
+                        <p><a href="/unsubscribe">@StatusMessage</a></p>
                     </div>
 
                 </div>
             </EditForm>
         </div>
 
-        @if (!string.IsNullOrEmpty(@StatusMessage))
-        {
-            <span class="alert alert-success">
-                @StatusMessage
-            </span>
-        }
+        
 
     </div>
 </div>
@@ -102,16 +97,20 @@
 
         try
         {
-            var result = await Http.PostAsJsonAsync("https://newsletterprovider-silicone-et.azurewebsites.net/api/Subscribe?code", SubscribeForm);
+            var result = await Http.PostAsJsonAsync("https://newsletters-g.azurewebsites.net/api/Subscribe?code=5XtUE2UNlWlJoiTXPCwxeZ8I9qPy-nQUVdYUyS3VX8vDAzFu64fJhA%3D%3D", SubscribeForm);
             if (result.IsSuccessStatusCode)
             {
                 StatusMessage = "Thank you for subscribing!";
+            }
+             else
+            {
+                StatusMessage = "Unable to subscribe right now";
             }
         }
         catch
         {
 
-            StatusMessage = "An error occurred while subscribing. Please try again.";
+            StatusMessage = "An error occurred while subscribing.";
 
         }
 
@@ -121,6 +120,8 @@
 
     public class SubscribeFormModel
     {
+        
+
         [Display(Name = "Daily Newsletter", Order = 0)]
         public bool Circle1 { get; set; }
 
@@ -139,20 +140,12 @@
         [Display(Name = "Podcasts", Order = 5)]
         public bool Circle6 { get; set; }
 
-
-
         [Display(Prompt = "Enter your email", Order = 6)]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Email is required")]
         [RegularExpression(@"^(?=.*[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$",
         ErrorMessage = "The email format is not valid.")]
-
-
         public string Email { get; set; } = null!;
-
-
-
-
     }
 
 }
