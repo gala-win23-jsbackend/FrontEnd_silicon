@@ -182,7 +182,7 @@
             if (result.Succeeded)
             {
               
-                await Http.PostAsJsonAsync("https://verificationprovider-silicon-gala.azurewebsites.net/api/GenerateVerificationCodeHttp?code=3EALQEKhAI2-5Lfz4ZFeiHVY_agBpGkgVtP5CKbegemvAzFuPcHMOw%3D%3D", new { Email = SignUpForm.Email });
+                await Http.PostAsJsonAsync("https://verificationprovider-silicon-gala.azurewebsites.net/api/GenereteVerificationCodeHTTP?code=l81zmqzuxHJvUlyvh52RshQlon1N8-2sqZ1-4xyZf6mbAzFugzx9pA%3D%3D", new { Email = SignUpForm.Email });
               
                     NavigationManager.NavigateTo($"Account/RegisterConfirmation?email={user.Email}&returnUrl={ReturnUrl}");
                 

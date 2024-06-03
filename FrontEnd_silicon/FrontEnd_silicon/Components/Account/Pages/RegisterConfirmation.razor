@@ -17,7 +17,7 @@
 <PageTitle>Register confirmation</PageTitle>
 
 <section id="confirmation">
-    <div class="container">
+    <div class="container w-75">
         <h1>Register confirmation</h1>
 
         @if (!string.IsNullOrEmpty(statusMessage))
@@ -25,24 +25,29 @@
             <p>@statusMessage</p>
         }
 
-        <h1>Verify Your Account</h1>
-        <p>Didn't receive an email?<button class="btn-gray" @onclick="ResendCode">Resend Code</button></p>
+       
 
         <EditForm class="form" novalidate FormName="VerifyCode" Model="VerifyCodeForm" asp-route-returnUrl="@ReturnUrl" OnValidSubmit="OnValidSubmit">
             <DataAnnotationsValidator />
+            <h1 class="mb-5" >Verify Your Account</h1>
+
             <div class="form-content">
 
                 <div class="input-group">
+                    
                     <label class="form-label">Enter Your Verification Code</label>
+                    <InputText type="text" @bind-Value="VerifyCodeForm.Code" class="w-50 p-3 h-50" />
+
                     <ValidationMessage For="() =>VerifyCodeForm.Code" class="text-danger" />
-                    <InputText type="text" @bind-Value="VerifyCodeForm.Code" class="w-25 p-3" />
                     <p>@statusMessage</p>
                 </div>
 
-                <button type="submit" class="btn-theme-s">Verify Code</button>
+                <button type="submit" class="btn btn-theme w-50 mb-3"><i class="fa-solid fa-right-to-bracket"></i>Verify Code</button>
             </div>
-           
+
         </EditForm>
+        <p>Didn't receive an email?<a @onclick="ResendCode" class="link-offset-2 link-underline link-underline-opacity-100">resend email</a></p>
+
     </div>
 </section>
 
@@ -81,7 +86,7 @@
                 {
                     user!.EmailConfirmed = true;
                     await UserManager.UpdateAsync(user);
-                    statusMessage = "Your account has been confirmed successfully.";
+                    statusMessage = "The account has been confirmed successfully.";
 
                     NavigationManager.NavigateTo("/account/login");
                 }
@@ -103,7 +108,7 @@
 
     private async Task ResendCode()
     {
-        var result = await Http.PostAsJsonAsync("https://verificationprovider-silicon-gala.azurewebsites.net/api/GenerateVerificationCodeHttp?code=3EALQEKhAI2-5Lfz4ZFeiHVY_agBpGkgVtP5CKbegemvAzFuPcHMOw%3D%3D", new { Email = Email });
+        var result = await Http.PostAsJsonAsync("https://verificationprovider-silicon-gala.azurewebsites.net/api/GenereteVerificationCodeHTTP?code=l81zmqzuxHJvUlyvh52RshQlon1N8-2sqZ1-4xyZf6mbAzFugzx9pA%3D%3D", new { Email = Email });
 
        if (result.IsSuccessStatusCode)
         {
@@ -127,7 +132,7 @@
         if (user is null)
         {
             HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
-            statusMessage = "Error finding user for unspecified email";
+            statusMessage = "Error finding user for missing email";
         }
     }
     public class VerifyCodeModel
