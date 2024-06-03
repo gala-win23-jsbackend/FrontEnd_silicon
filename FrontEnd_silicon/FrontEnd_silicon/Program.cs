@@ -1,22 +1,33 @@
-using FrontEnd_silicon.Client.Pages;
+
 using FrontEnd_silicon.Components;
 using FrontEnd_silicon.Components.Account;
 using FrontEnd_silicon.Data;
+using FrontEnd_silicon.Services;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.SystemTextJson;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpContextAccessor();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
 
 builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+builder.Services.AddScoped<ApplicationUserRepository>();
+builder.Services.AddScoped<UserAddressRepository>();
+builder.Services.AddScoped<UserProfileRepository>();
+builder.Services.AddScoped<ThemeService>();
+builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<UserDataService>();
 
 builder.Services.AddAuthentication(options =>
     {
@@ -25,17 +36,35 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.Cookie.HttpOnly = true;
+    x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    x.LoginPath = "/signin";
+    x.ExpireTimeSpan = TimeSpan.FromHours(1);
+    x.SlidingExpiration = true;
+});
+
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddIdentityCore<ApplicationUser>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.User.RequireUniqueEmail = true;
+    options.Password.RequiredLength = 6;
+})
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
 
+builder.Services.AddSingleton(s => new GraphQLHttpClient("https://courseprovider-silicon.azurewebsites.net/api/graphql?code=u3D", new SystemTextJsonSerializer()));
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 

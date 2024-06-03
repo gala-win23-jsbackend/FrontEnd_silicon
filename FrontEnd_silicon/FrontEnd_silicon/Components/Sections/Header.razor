@@ -1,0 +1,137 @@
+﻿@inject IJSRuntime JS
+
+
+@* https://www.youtube.com/watch?v=HcVfL9o4LUw *@
+
+
+<header class="header">
+
+    <div class="container">
+
+
+        <a class="logo" href="/"><img alt="Silicon" src="/images/silicone-logo-light_theme.svg" id="logo"></a>
+
+
+        <div id="menu" class=" menu-nav">
+            <nav>
+                <NavLink class="menu-link" href="/#overview">Overview</NavLink>
+                <NavLink class="menu-link" href="/#features">Features</NavLink>
+                <NavLink class="menu-link" href="/contact">Contact</NavLink>
+
+                @* <NavLink class="menu-link" href="/contactus">Contact</NavLink> *@
+
+                <AuthorizeView>
+                    <Authorized>
+                        <NavLink class="menu-link" href="/courses">Courses</NavLink>
+                    </Authorized>
+                </AuthorizeView>
+            </nav>
+        </div>
+
+        <div class="btn-switch">
+            <label>Light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" />
+                <span class="slider round"></span>
+            </label>
+            <label>Dark</label>
+        </div>
+
+
+        <div class="account-buttons" id="account-buttons">
+            <AuthorizeView>
+                <Authorized>
+                    <a class="btn-theme" href="/signout"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
+                    <div class="profile-img">
+                        <a href="/account/details">
+                            <img src="/images/uploads/avatar.jpg" alt="Profile image">
+
+                        </a>
+                    </div>
+                </Authorized>
+
+                <NotAuthorized>
+                    <a class="btn-gray" href="/account/login"><i class="fa-solid fa-right-to-bracket"></i><span>Sign in</span></a>
+                    <a class="btn-theme" href="/account/register"><i class="fa-regular fa-user"></i><span>Sign up</span></a>
+                </NotAuthorized>
+            </AuthorizeView>
+
+        </div>
+
+
+
+
+
+
+
+        <div class="btn-mobile">
+            <button class="btn" id="mobil-menu-btn"><i class="fa-solid fa-bars-staggered"></i></button>
+        </div>
+
+    </div>
+
+    <div id="mobil-menu" class="wrapper" aria-expanded="false">
+        <div class="account-buttons">
+            <AuthorizeView>
+                <Authorized>
+                    <div class="profile-img">
+                        <a href="/account/details" class="image">
+                            <img src="/images/uploads/avatar.jpg" alt="Profile image">
+
+                        </a>
+                    </div>
+                    <a class="btn-theme" href="/account/details">Details</a>
+                    <a class="btn-theme" href="/courses">Courses</a>
+                    <a class="btn-gray" href="/signout"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
+
+                </Authorized>
+
+                <NotAuthorized>
+                    <a class="btn-gray" href="/account/login"><i class="fa-solid fa-right-to-bracket"></i><span>Sign in</span></a>
+                    <a class="btn-theme" href="/account/register"><i class="fa-regular fa-user"></i><span>Sign up</span></a>
+                </NotAuthorized>
+            </AuthorizeView>
+
+            <div class="menu">
+                <nav>
+                    <NavLink class="menu-link" href="/#overview">Overview</NavLink>
+                    <NavLink class="menu-link" href="/#features">Features</NavLink>
+                    <NavLink class="menu-link" href="/contact">Contact</NavLink>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+
+
+</header>
+
+
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeMobileMenu");
+            await JS.InvokeVoidAsync("toggleDarkMode");
+        }
+    }
+}
+
+@* @code {
+    public interface IAsyncDisposable;
+    private IJSObjectReference? module;
+
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            module = await JS.InvokeAsync<IJSObjectReference>("import", "./Components/Sections/Header.razor.js");
+            await module.InvokeVoidAsync("mobile");
+            //await module.InvokeVoidAsync("toggleDarkMode");
+
+        }
+    }
+} *@

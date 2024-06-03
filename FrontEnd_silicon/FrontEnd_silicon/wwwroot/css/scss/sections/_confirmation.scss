@@ -1,0 +1,18 @@
+#confirmation {
+    height: 100%;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        @include lg {
+            width: 60%;
+        }
+
+        @include xl {
+            width: 45%;
+        }
+    }
+}

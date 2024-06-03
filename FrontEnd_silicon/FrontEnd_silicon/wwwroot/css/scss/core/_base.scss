@@ -1,32 +1,95 @@
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    @include standard-text;
+    font-size: 16px;
 }
 
-a, .btn-link {
-    color: #006bb7;
+.text-xs {
+    @include text-xs;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+.text-s {
+    @include text-s;
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.text-m {
+    @include text-m;
 }
 
-.content {
-    padding-top: 1.1rem;
+.text-lg {
+    @include text-lg;
+}
+
+.text-xl {
+    @include text-xl;
+}
+
+.text-lead {
+    @include text-lead;
+}
+
+.d1 {
+    @include d1;
+}
+
+.d2 {
+    @include d2;
+}
+
+.d3 {
+    @include d3;
+}
+
+.d4 {
+    @include d4;
+}
+
+.d5 {
+    @include d5;
+}
+
+.d6 {
+    @include d6;
+}
+
+h1, .h1 {
+    @include h1;
+}
+
+h2, .h2 {
+    @include h2;
+}
+
+h3, .h3 {
+    @include h3;
+}
+
+h4, .h4 {
+    @include h4;
 }
 
 h1:focus {
     outline: none;
 }
 
-.valid.modified:not([type=checkbox]) {
-    outline: 1px solid #26b050;
+h5, .h5 {
+    @include h5;
 }
+
+h6, .h6 {
+    @include h6;
+}
+
+.wrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+.hide {
+    display: none !important;
+}
+
+
 
 .invalid {
     outline: 1px solid #e50000;
@@ -42,9 +105,9 @@ h1:focus {
     color: white;
 }
 
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
+.blazor-error-boundary::after {
+    content: "An error has occurred."
+}
 
 .darker-border-checkbox.form-check-input {
     border-color: #929292;

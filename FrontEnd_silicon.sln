@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd_silicon", "FrontEnd_silicon\FrontEnd_silicon\FrontEnd_silicon.csproj", "{E01EA3E9-73BA-40D6-863A-3AC53CA6D0AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontEnd_silicon", "FrontEnd_silicon\FrontEnd_silicon\FrontEnd_silicon.csproj", "{E01EA3E9-73BA-40D6-863A-3AC53CA6D0AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd_silicon.Client", "FrontEnd_silicon\FrontEnd_silicon.Client\FrontEnd_silicon.Client.csproj", "{2AE84AA9-A955-4FD6-AD2E-B46A051E7D80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontEnd_silicon.Client", "FrontEnd_silicon\FrontEnd_silicon.Client\FrontEnd_silicon.Client.csproj", "{2AE84AA9-A955-4FD6-AD2E-B46A051E7D80}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

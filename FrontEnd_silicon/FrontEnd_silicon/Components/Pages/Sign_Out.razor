@@ -1,0 +1,28 @@
+﻿@page "/signout"
+@using FrontEnd_silicon.Data
+@using Microsoft.AspNetCore.Identity
+
+
+<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <div class="text-center">
+        <h3>Signing out...</h3>
+        <NavLink class="btn-gray" href="/"><span>Home</span></NavLink>
+    </div>
+</div>
+
+@code {
+    [Inject]
+    private SignInManager<ApplicationUser> _signInManager { get; set; } = null!;
+
+    private async Task SignOutUser()
+    {
+       
+        await _signInManager.SignOutAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await SignOutUser();
+    }
+
+}

@@ -1,17 +1,52 @@
-﻿@inherits LayoutComponentBase
-@layout AccountLayout
+﻿@using FrontEnd_silicon.Components.Layout
+@using FrontEnd_silicon.Data
+@using FrontEnd_silicon.Services
+
+@inherits LayoutComponentBase
+
+@layout MainLayout
+
+@attribute [StreamRendering]
+@inject UserDataService UserDataService
 
 <h1>Manage your account</h1>
 
-<div>
-    <h2>Change your account settings</h2>
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <ManageNavMenu />
+<section class="account-details">
+
+    @if (!string.IsNullOrEmpty(@statusMessage))
+    {
+        <div class="errormessage">
+            @statusMessage
         </div>
-        <div class="col-md-9">
+    }
+    <div class="container">
+
+        @if (user == null)
+        {
+            <p>Loading...</p>
+        }
+        else
+        {
+            <_UserProfileNavComponent User="user" />
+
             @Body
-        </div>
+
+        }
+
+
     </div>
-</div>
+</section>
+
+
+@code {
+    [SupplyParameterFromQuery]
+    public string statusMessage { get; set; } = null!;
+
+    [CascadingParameter]
+    public ApplicationUser user { get; set; } = null!;
+
+    [CascadingParameter]
+    private HttpContext HttpContext { get; set; } = default!;
+
+
+}

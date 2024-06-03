@@ -6,7 +6,7 @@ public class UserProfile
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
 
-    public string? ProfileImage { get; set; } = "avatar.svg";
+    public string ProfileImage { get; set; } = "avatar.svg";
    
     public string? Bio { get; set; }
 }
