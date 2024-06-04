@@ -8,6 +8,7 @@
 @inject IEmailSender<ApplicationUser> EmailSender
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
+@inject IConfiguration Configuration
 @inject HttpClient Http
 
 @rendermode InteractiveServer
@@ -69,7 +70,8 @@
 
         try
         {
-            var result = await Http.PostAsJsonAsync("https://newsletters-g.azurewebsites.net/api/Unsubscribe?code=LSf1hB-5ZADBU0s1YwFuGgj0MDt1CY0Jd6ZnH2O47wI8AzFuJfjtfg%3D%3D", UnsubscribeForm);
+            var result = await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:UnsubscribersProvider"), UnsubscribeForm);
+
             if (result.IsSuccessStatusCode)
             {
                 StatusMessage = "You was unsubscribed successfully!";

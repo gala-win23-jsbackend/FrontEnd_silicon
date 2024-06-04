@@ -19,6 +19,8 @@
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
 @inject HttpClient Http
+@inject IConfiguration Configuration
+
 @rendermode InteractiveServer
 
 <PageTitle>Sign Up</PageTitle>
@@ -182,8 +184,8 @@
             if (result.Succeeded)
             {
               
-                await Http.PostAsJsonAsync("https://verificationprovider-silicon-gala.azurewebsites.net/api/GenereteVerificationCodeHTTP?code=l81zmqzuxHJvUlyvh52RshQlon1N8-2sqZ1-4xyZf6mbAzFugzx9pA%3D%3D", new { Email = SignUpForm.Email });
-              
+                await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:GenerateVerificationCodeHTTP"), new { Email = SignUpForm.Email });
+
                     NavigationManager.NavigateTo($"Account/RegisterConfirmation?email={user.Email}&returnUrl={ReturnUrl}");
                 
                 

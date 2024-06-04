@@ -7,6 +7,8 @@
 @using FrontEnd_silicon.Data
 @using System.ComponentModel.DataAnnotations
 
+
+@inject IConfiguration Configuration
 @inject UserManager<ApplicationUser> UserManager
 @inject IEmailSender<ApplicationUser> EmailSender
 @inject NavigationManager NavigationManager
@@ -71,7 +73,7 @@
 
     private async Task OnValidSubmit()
     {
-        var result = await Http.PostAsJsonAsync("https://verificationprovider-silicon-gala.azurewebsites.net/api/verification?code=RVY7ufa5b06yFUn3IiKiD0L78VQhjuXyvd6RlhbJj06aAzFuw6F0Qw%3D%3D", new
+        var result = await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:ValidateVerificationCode"), new
 
         {
             Email = Email,
@@ -108,7 +110,7 @@
 
     private async Task ResendCode()
     {
-        var result = await Http.PostAsJsonAsync("https://verificationprovider-silicon-gala.azurewebsites.net/api/GenereteVerificationCodeHTTP?code=l81zmqzuxHJvUlyvh52RshQlon1N8-2sqZ1-4xyZf6mbAzFugzx9pA%3D%3D", new { Email = Email });
+        var result = await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:GenerateVerificationCodeHTTP"), new { Email = Email });
 
        if (result.IsSuccessStatusCode)
         {

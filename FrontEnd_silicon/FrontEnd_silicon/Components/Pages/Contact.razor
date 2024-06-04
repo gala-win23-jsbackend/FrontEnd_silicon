@@ -1,6 +1,8 @@
 ﻿@page "/contact"
 @using System.ComponentModel.DataAnnotations
+
 @inject HttpClient Http
+@inject IConfiguration Configuration
 
 
 <section class="contact">
@@ -172,8 +174,9 @@
     {
 
         try
-        { //här kanske man måste skapa nåt provider för att läsa meddelande
-            var result = await Http.PostAsJsonAsync("https://newsletters-g.azurewebsites.net/api/", ContactForm);
+        { //här kanske man måste skapa nåt provider 
+            var result = await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:SubscribersProvider"), ContactForm);
+
             if (result.IsSuccessStatusCode)
             {
                 StatusMessage = "Thank you for your message!";
