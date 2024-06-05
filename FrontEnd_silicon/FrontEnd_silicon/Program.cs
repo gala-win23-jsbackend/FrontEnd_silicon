@@ -36,13 +36,15 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-builder.Services.ConfigureApplicationCookie(x =>
+builder.Services.ConfigureApplicationCookie(options =>
 {
-    x.Cookie.HttpOnly = true;
-    x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    x.LoginPath = "/signin";
-    x.ExpireTimeSpan = TimeSpan.FromHours(1);
-    x.SlidingExpiration = true;
+    options.Cookie.HttpOnly = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.IsEssential = true;
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+    options.SlidingExpiration = true;
+    options.LoginPath = "/account/register";
+    options.LogoutPath = "/Account/Lockout";
 });
 
 
@@ -62,7 +64,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options =>
     .AddSignInManager()
     .AddDefaultTokenProviders();
 
-builder.Services.AddSingleton(s => new GraphQLHttpClient("", new SystemTextJsonSerializer()));
+builder.Services.AddSingleton(s => new GraphQLHttpClient("https://courseprovider-silicon-gala.azurewebsites.net/api/graphql?code=HICWJNC7QYWfyyICw5z7E6Apvy-R_QAaGQEF6e_oahmfAzFuhgF5qQ%3D%3D", new SystemTextJsonSerializer()));
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 builder.Services.AddSignalR();
 

@@ -9,18 +9,25 @@
 
 
 @rendermode InteractiveServer
-@attribute [StreamRendering]
 @attribute [Authorize]
+@attribute [StreamRendering]
 
+
+@inject IConfiguration Configuration
 @inject UserDataService UserDataService
 @inject CourseService CourseService
 @inject HttpClient Http
 
+<PageTitle>Courses</PageTitle>
+
 <section class="courses">
     <div class="container">
-         @if (!string.IsNullOrEmpty(statusMessage))
+
+        @if (!string.IsNullOrEmpty(@StatusMessage))
         {
-            <p>@statusMessage</p>
+            <div class="alert alert-danger" role="alert">
+                @StatusMessage
+            </div>
         }
 
         <div class="home-course">
@@ -39,21 +46,16 @@
             </div>
 
             <div class="filters">
+                <select>
+                    <option >AllCategories</option>
+                </select>
 
-                <div class="browse-and-search">
-                    
-
+                <div class="browse-and-search">                
                     <div class="input-search-group">
                         <input id="searchQuery" class="input-group-text" name="searchQuery" placeholder="Search courses" />
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-
                 </div>
-
-
-
-
-
             </div>
 
         </div>
@@ -77,8 +79,6 @@
                         @if (course.IsBestseller)
                         {
                             <div class="best-seller">Best Seller</div>
-
-
                         }
 
                         @if (userCourse != null)
@@ -177,7 +177,8 @@
 
 
 @code {
-    private string statusMessage = string.Empty;
+    [SupplyParameterFromQuery]
+    public string? StatusMessage { get; set; } = "";
 
     private List<CourseCardModel>? courses;
 
@@ -192,12 +193,12 @@
         var response = await CourseService.RequestRemoveUserCourseAsync(removeUserCourse);
         if (response)
         {
-            statusMessage = "Course removed";
+            StatusMessage = "Course removed";
             StateHasChanged();
         }
         else
         {
-            statusMessage = "Failed to remove course";
+            StatusMessage = "Failed to remove course";
         }
     }
 
@@ -206,12 +207,12 @@
         var response = await CourseService.RequestCreateUserCoursesAsync(addUserCourse);
         if (response != null)
         {
-            statusMessage = "Course added to your courses";
+            StatusMessage = "Course added to your courses";
             StateHasChanged();
         }
         else
         {
-            statusMessage = "Failed to add course";
+            StatusMessage = "Failed to add course";
         }
     }
 
@@ -234,8 +235,9 @@
                         {
                             Query = "{getCourses {id imageUri isDigital isBestseller likes hours likesInProcent isBookmarked title authors{name} prices {price discount}}}"
                         };
+                    //GraphQL_query
 
-                    var response = await Http.PostAsJsonAsync("https://courseprovider-silicon-camilla.azurewebsites.net/api/graphql?code=LL18Cb5IbCut7M9hw0bCm5RFI7hOjOJwHOmU6-Dyd1TXAzFuSGQ4FA%3D%3D", query);
+                    var response = await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:GraphQL_query"), query);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -304,12 +306,12 @@
                         }
                         else
                         {
-                            Console.WriteLine("getCourses saknas i JSON-svaret.");
+                            Console.WriteLine("getCourses is missing in the JSON response");
                         }
                     }
                     else
                     {
-                        Console.WriteLine($"HTTP-förfrågan misslyckades med statuskod: {response.StatusCode}");
+                        Console.WriteLine($"HTTP request failed with status code: {response.StatusCode}");
                     }
 
                 }
@@ -317,7 +319,7 @@
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Ett fel inträffade: {ex.Message}");
+            Console.WriteLine($"An error occurred: {ex.Message}");
         }
     }
 
