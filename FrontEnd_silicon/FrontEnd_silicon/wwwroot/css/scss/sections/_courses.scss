@@ -275,21 +275,25 @@
                     color: $theme;
                 }
 
+                .course-image{
+                    width:516px;
+                }
+                
                 .course-details {
                     text-decoration: none;
 
-                   
+
 
                     .info {
                         padding: 15px;
                         background-color: $white;
-                        border: 0.5px solid $gray-100;
+                        border: 0.063rem solid $gray-100;
 
                         .course-title {
                             display: block;
                             height: 64px;
                             @include h5;
-                            color: $gray-800 !important;
+                            color: $gray-800 ;
                             margin-bottom: 0;
                         }
 

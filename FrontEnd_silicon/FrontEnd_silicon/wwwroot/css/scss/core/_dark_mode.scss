@@ -186,6 +186,7 @@
                     .select {
                         background-color: #151822 !important;
                         border: 0.063rem solid $gray-800;
+
                         .selected {
                             background-color: #151822 !important;
                             //border: 0.063rem solid $gray-800;
@@ -225,44 +226,25 @@
                 }
             }
 
-            a {
+            .course-details {
+                background-color: #151822 !important;
+
+                .info {
+                    background-color: $gray-900 !important;
+                    border: 0.063rem solid $gray-800 !important;
+
+                    #course-title {
+                        color: #fffff !important;
+                    }
+                }
+
                 &:hover {
                     box-shadow: 0 0 20px #e2e5f1 !important;
-                    color: $black !important;
-
-                    h2 {
-                        color: $gray-900 !important;
-                    }
-                }
-
-
-                .course-card-content {
-                    .text-s {
-                        color: $gray-600;
-                    }
+                    //color: $black !important;
                 }
             }
 
 
-
-            nav {
-                .pagination {
-                    color: $gray-600;
-
-                    .page-link {
-                        background-color: #151822 !important;
-                        border: none;
-                        color: $gray-600;
-
-
-
-
-                        span {
-                            color: $gray-600;
-                        }
-                    }
-                }
-            }
 
             .hero {
                 background-color: $gray-800 !important;

@@ -5,7 +5,8 @@
         height: 500px;
         width: 100%;
         object-fit: cover;
-        background-color: rgba(39, 42, 63, 0.476);
+        //background-color: rgba(39, 42, 63, 0.476);
+        background-color: rgba(0, 0, 0, 0.7);
         z-index: -1;
         margin: 0 auto;
 
@@ -31,7 +32,7 @@
             .bread-crumbs {
                 display: inline-block;
                 margin-top: 25px;
-                color: var(--color-gray);
+                color: $gray-400;
                 margin-bottom: 2rem;
                 text-decoration: none;
 
@@ -58,7 +59,7 @@
                     gap: 0.5rem;
 
                     .bestseller {
-                        background-color: $success;
+                        background-color: $success-dark;
                         color: white !important;
                         border-radius: 5px;
                         padding-right: 4px;
@@ -70,8 +71,8 @@
                     }
 
                     .digital {
-                        background-color: var(--color-white);
-                        color: var(--color-black);
+                        background-color: $white;
+                        color: $black;
                         border-radius: 5px;
                         padding-right: 4px;
                         padding-left: 4px;
@@ -79,30 +80,37 @@
                         @include standard-text;
                         font-size: 12px !important;
                         font-weight: 800;
+                        width: 74px;
+                        text-align: center;
                     }
                 }
 
                 .title {
-                    color: var(--color-white);
+                    color: $white;
                 }
 
                 .text {
-                    color: var(--color-gray) !important;
+                    color: $gray-400 !important;
                 }
 
                 .info {
                     display: flex;
-                    color: var(--color-gray) !important;
+                    color: $gray-400 !important;
                     gap: 1rem;
 
                     .stars {
                         padding-right: 8px;
-                        border-right: 1px solid var(--color-gray);
+                    }
+
+                    .reviews {
+                        margin-left: -20px;
+                        padding-right: 8px;
+                        border-right: 0.063rem solid $gray-700;
                     }
 
                     .thumbs {
                         padding-right: 8px;
-                        border-right: 1px solid var(--color-gray);
+                        border-right: 0.063rem solid $gray-700;
                     }
                 }
 
@@ -112,7 +120,7 @@
                     grid-template-areas: 'img p' 'img c';
                     width: fit-content;
                     margin-top: 2rem;
-                    color: var(--color-gray) !important;
+                    color: $gray-400 !important;
                     margin-top: 10rem;
 
                     img {
@@ -125,7 +133,7 @@
                         grid-area: p;
                         margin: 0;
                         @include standard-heading;
-                        color: var(--color-gray) !important;
+                        color: $gray-400 !important;
                     }
 
                     .creator-name {
@@ -138,17 +146,29 @@
 
         .content {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            grid-template-rows: auto;
-            grid-template-areas:
-                'title aside' 'learn aside' 'details aside' 'details aside';
+
+
+
+            @include lg {
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: auto;
+                grid-template-areas:
+                    'title aside' 'learn aside' 'details aside' 'details aside';
+            }
+
+
 
             .description {
+                width: 80%;
                 margin-top: 7rem;
                 margin-bottom: 3rem;
 
+                @include lg {
+                    margin-bottom: 9rem;
+                }
+
+
                 p {
-                    width: 80%;
                     margin-right: 2rem;
                 }
 
@@ -184,7 +204,7 @@
                 margin-top: 7rem;
                 padding: 30px;
                 height: fit-content;
-                border: 3px solid var(--color-gray);
+                border: 3px solid $gray-400;
                 border-radius: 7px;
 
                 .info {
@@ -205,68 +225,97 @@
 
                     .current-price {
                         font-weight: 900;
-                        color: var(--color-gray-900)
+                        color: $gray-900;
                     }
 
                     .original-price {
                         text-decoration: line-through;
                         font-weight: 100;
                         font-size: 1.1rem !important;
-                        color: var(--color-gray-500);
+                        color: $gray-500;
                     }
                 }
 
-                .btn {
-                    width: 40%;
+                form {
+                    .btn-theme-s {
+                        width: 100% !important;
+                    }
                 }
             }
         }
 
-        .details {
-            grid-area: details;
-            text-align: left;
+        .course-details {
+            .container {
+                display: flex;
+                gap: 4rem;
 
-            h2 {
-                margin-bottom: 3rem;
-            }
-
-            .detail {
-                display: grid;
-                grid-template-columns: fit-content auto;
-                grid-template-areas:
-                    'number title' '. text';
-                column-gap: 2rem;
-                width: fit-content;
-
-                .divider {
-                    border-left: 1px solid var(--color-gray-100);
-                    margin: 0 auto;
-                }
-
-                .number {
-                    grid-area: number;
-                    display: inline-flex;
-                    border-radius: 50%;
-                    border: 10px solid var(--color-gray-100);
-                    width: 75px;
-                    margin: 0 auto;
-                    text-align: left;
-                    justify-content: flex-start;
+                .box-one {
+                    flex: 2;
 
                     h2 {
-                        margin: 0 auto;
+                        margin-top: 2rem;
+                        margin-bottom: 3rem;
+                    }
+
+                    .content {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+                        gap: 1rem;
+
+                        .circle-gray {
+                            display: none;
+
+                            @include lg {
+                                z-index: -1;
+                                width: 80px;
+                                height: 80px;
+                                background: $gray-200;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                margin-bottom: 3rem;
+                            }
+
+                            .circle-wite {
+                                z-index: 1;
+                                width: 60px;
+                                height: 60px;
+                                background-color: $white;
+                                border-radius: 50%;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                p {
+                                    z-index: 2;
+                                    margin-bottom: 0;
+                                    color: $black;
+                                    font-size: 2rem;
+                                    font-weight: 700;
+                                    width: 40px;
+                                    height: 40px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                            }
+                        }
+
+                        .content-text {
+                            flex: 5;
+                            margin-bottom: 3rem;
+                        }
                     }
                 }
 
-                .detail-title {
-                    grid-area: title;
-                    margin: auto 0;
-                    width: 90%;
-                }
+                .box-two {
+                    display: none;
 
-                .text {
-                    grid-area: text;
-                    width: 70%;
+                    @include lg {
+                        flex: 1;
+                    }
                 }
             }
         }
@@ -295,7 +344,7 @@
             color: gray !important;
 
             h2 {
-                color: var(--color-white)
+                color: $white;
             }
         }
 

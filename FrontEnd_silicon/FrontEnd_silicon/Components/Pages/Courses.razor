@@ -78,86 +78,86 @@
         }
         else
         {
-            <div class="course-list">
-                @foreach (var course in courses)
-                {
-                    var removeCourseModel = new UserCourses { UserId = user.Id, CourseId = course.Id! };
-                    var joinCourseModel = new UserCourses { UserId = user.Id, CourseId = course.Id! };
+        <div class="course-list">
+            @foreach (var course in courses)
+            {
+                var removeCourseModel = new UserCourses { UserId = user.Id, CourseId = course.Id! };
+                var joinCourseModel = new UserCourses { UserId = user.Id, CourseId = course.Id! };
 
-                    bool isBookmarked = false;
-                    var link = $"courses/details/{course.Id}";
-                    <div class="course">
-                        @if (course.IsBestseller)
-                        {
-                            <div class="best-seller">Best Seller</div>
-                        }
+                bool isBookmarked = false;
+                var link = $"courses/details/{course.Id}";
+                <div class="course">
+                    @if (course.IsBestseller)
+                    {
+                        <div class="best-seller">Best Seller</div>
+                    }
 
-                        @if (userCourse != null)
+                    @if (userCourse != null)
+                    {
+                        foreach (var courseId in userCourse)
                         {
-                            foreach (var courseId in userCourse)
+                            if (course.Id == courseId.CourseId)
                             {
-                                if (course.Id == courseId.CourseId)
+                                isBookmarked = true;
+                            }
+                        };
+                    }
+
+                    @if (isBookmarked)
+                    {
+                        <EditForm Model="removeCourseModel" FormName="removecourse" OnValidSubmit="@(() => RemoveUserCourse(removeCourseModel))" novalidate>
+                            <InputText type="hidden" @bind-Value="@user.Id" />
+                            <InputText type="hidden" @bind-Value="@course.Id" />
+                            <button type="submit" class="saved-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove">
+                                <i class="fa-solid fa-bookmark"></i>
+                            </button>
+                        </EditForm>
+                    }
+                    else
+                    {
+                        <EditForm Model="joinCourseModel" FormName="joincourse" OnValidSubmit="@(() => JoinUserCourse(joinCourseModel))" novalidate>
+                            <InputText type="hidden" @bind-Value="@user.Id" />
+                            <InputText type="hidden" @bind-Value="@course.Id" />
+                            <button type="submit" class="saved-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                        </EditForm>
+                    }
+
+
+
+                    <a href="@link"> <img class="course-image" src="@course.ImageUri" /></a>
+                    <a class="course-details" href="@link">
+                        <div class="info">
+                            <h2 class="course-title" id="course-title">@course.Title</h2>
+                            <p class="course-creator">By @course.Author</p>
+                            <div class="course-prices">
+                                @if (course.DiscountPrice > 0)
                                 {
-                                    isBookmarked = true;
+                                    <div class="discount-price">$@course.DiscountPrice</div>
+                                    <div class="original-price discount">$@course.Price</div>
                                 }
-                            };
-                        }
+                                else
+                                {
+                                    <div class="original-price">$@course.Price</div>
+                                }
 
-                        @if (isBookmarked)
-                        {
-                            <EditForm Model="removeCourseModel" FormName="removecourse" OnValidSubmit="@(() => RemoveUserCourse(removeCourseModel))" novalidate>
-                                <InputText type="hidden" @bind-Value="@user.Id" />
-                                <InputText type="hidden" @bind-Value="@course.Id" />
-                                <button type="submit" class="saved-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove">
-                                    <i class="fa-solid fa-bookmark"></i>
-                                </button>
-                            </EditForm>
-                        }
-                        else
-                        {
-                            <EditForm Model="joinCourseModel" FormName="joincourse" OnValidSubmit="@(() => JoinUserCourse(joinCourseModel))" novalidate>
-                                <InputText type="hidden" @bind-Value="@user.Id" />
-                                <InputText type="hidden" @bind-Value="@course.Id" />
-                                <button type="submit" class="saved-item" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Remove">
-                                    <i class="fa-regular fa-bookmark"></i>
-                                </button>
-                            </EditForm>
-                        }
+                            </div>
 
-
-
-                        <a href="@link"> <img class="course-image" src="@course.ImageUri" /></a>
-                        <a class="course-details" href="@link">
-                            <div class="info">
-                                <h2 class="course-title">@course.Title</h2>
-                                <p class="course-creator">By @course.Author</p>
-                                <div class="course-prices">
-                                    @if (course.DiscountPrice > 0)
-                                    {
-                                        <div class="discount-price">$@course.DiscountPrice</div>
-                                        <div class="original-price discount">$@course.Price</div>
-                                    }
-                                    else
-                                    {
-                                        <div class="original-price">$@course.Price</div>
-                                    }
-
-                                </div>
-
-                                <hr />
-                                <div class="course-footer">
-                                    <div class="course-hours"><i class="fa-regular fa-clock"></i> @course.Hours</div>
-                                    <div class="course-likes">
-                                        <i class="fa-regular fa-thumbs-up"></i>
-                                        <span>@course.LikesInProcent</span>
-                                        <span>(@course.LikesInNumbers)</span>
-                                    </div>
+                            <hr />
+                            <div class="course-footer">
+                                <div class="course-hours"><i class="fa-regular fa-clock"></i> @course.Hours</div>
+                                <div class="course-likes">
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <span>@course.LikesInProcent</span>
+                                    <span>(@course.LikesInNumbers)</span>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                }
-            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
         }
 
        

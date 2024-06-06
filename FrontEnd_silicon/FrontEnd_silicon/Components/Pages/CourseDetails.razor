@@ -39,7 +39,7 @@ else
                     <i class="fa-solid fa-angles-right"></i>
                     <a href="/courses">Courses</a>
                     <i class="fa-solid fa-angles-right"></i>
-                    <a href="/course/details/@course.Id">@course.Title</a>
+                    <a href="#">@course.Title</a>
                 </div>
                 <div class="title-description">
                     <div class="labels">
@@ -58,11 +58,15 @@ else
                         <div class="stars">
                             @for (var i = 0; i < course.StarRating; i++)
                             {
-                                <i class="fa-solid fa-star" style="color: #FFBA08;"></i>
+                                <i class="fa-solid fa-star" style="color: #FFE8AD;"></i>
                             }
                         </div>
+                        <div class="reviews">
+                            <p>(@course.Reviews reviews)</p>
+                            <div></div>
+                        </div>
                         <div class="thumbs">
-                            <i class="fa-light fa-thumbs-up" style="color: #B4B7C9;"></i>
+                            <i class="fa-regular fa-thumbs-up" style="color: #B4B7C9;"></i>
                             <span>@course.Likes Likes</span>
                         </div>
                         <div class="hours">
@@ -73,7 +77,7 @@ else
                     <div class="creator">
                         @foreach (var author in course.Authors!)
                         {
-                            <img src="@author.AuthorImage" alt="">
+                            <img src="@author.AuthorImg" alt="">
                             <div class="created">Created by</div>
                             <div class="creator-name">@author.Name</div>
                         }
@@ -92,7 +96,7 @@ else
                     @foreach (var include in course.Content.Includes!)
                     {
                         <div class="info">
-                            <i class="fa-regular fa-display"></i>
+                            <i class="fa-solid fa-trophy"></i>
                             <p>@include</p>
                         </div>
                     }
@@ -114,51 +118,33 @@ else
                     </EditForm>
                 </div>
 
-                <div class="details">
-                    <h2>Program Details</h2>
-                    @foreach (var detail in course.Content.ProgramDetails!)
-                    {
-                        <div class="detail">
-                            <div class="number">
-                                <h2>@detail.Id</h2>
-                            </div>
-                            <div class="divider"></div>
-                            <h3 class="detail-title">@detail.Title</h3>
-                            <p class="text">@detail.Description</p>
+                
+                <div class="course-details">
+                    <div class="container">
+                        <div class="box-one">
+                            <h2>Program Details</h2>
+                            @foreach (var detail in course.Content.ProgramDetails!)
+                            {
+                                <div class="content">
+                                    <div class="circle-gray">
+                                        <div class="circle-wite">
+                                            <p>@detail.Id</p>
+                                        </div>
+                                    </div>
+                                    <div class="content-text">
+                                        <h3>@detail.Title</h3>
+                                        <p>@detail.Description</p>
+                                    </div>
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
-            </div>
-            <div class="creator-info">
-                <img id="pattern" src="/images/Courses/pattern.svg" alt="">
-                <div class="creator-img">
-                    @foreach (var author in course.Authors)
-                    {
-                        <img src="@author.AuthorImage" alt="@author.Name">
-                    }
-                </div>
-                <div class="creator-text">
-                    <p>Learn from the best</p>
-                    @foreach (var author in course.Authors)
-                    {
-                        <h2>@author.Name</h2>
-                    }
-                    <p>@course.Reviews</p>
-                    <div class="buttons">
-                        <button class="btn-red">
-                            <i class="fa-brands fa-youtube" style="color: #ffffff;"></i>
-                            240k subscribers
-                        </button>
-                        <button class="btn-theme">
-                            <i class="fa-brands fa-facebook" style="color: #ffffff;"></i>
-                            180k followers
-                        </button>
                     </div>
                 </div>
+
             </div>
+          
         </div>
     </section>
-    <div>@user.Email</div>
 }
 
 @code {
