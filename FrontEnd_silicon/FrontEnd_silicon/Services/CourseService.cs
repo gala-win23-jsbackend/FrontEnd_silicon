@@ -31,7 +31,7 @@ public class CourseService(GraphQLHttpClient client)
                     hours
                     authors {
                         name
-                        authorImage
+                        authorImg
                     }
                     prices {
                         currency

@@ -305,35 +305,32 @@ h6, .h6 {
   background-color: #151822 !important;
   color: #F3F6FF;
 }
-.dark-mode .courses .container .table .filters .select {
+.dark-mode .courses .container .upper-content .search-categories .select {
   background-color: #151822 !important;
-}
-.dark-mode .courses .container .table .filters .select .selected {
-  background-color: #151822 !important;
-  color: #9397AD;
-}
-.dark-mode .courses .container .table .filters .select svg {
-  color: #D4D7E5;
-}
-.dark-mode .courses .container .table .filters .select .select-options {
-  background-color: #0B0F19 !important;
   border: 0.063rem solid #33354D;
+}
+.dark-mode .courses .container .upper-content .search-categories .select .selected {
+  background-color: #151822 !important;
   color: #9397AD;
 }
-.dark-mode .courses .container .table .filters .select .select-options .option:hover {
+.dark-mode .courses .container .upper-content .search-categories .select .select-options {
+  background-color: #0B0F19 !important;
+  color: #9397AD;
+}
+.dark-mode .courses .container .upper-content .search-categories .select .select-options .option:hover {
   background-color: #33354D;
   border-radius: 3px;
   cursor: pointer;
   color: #FFFFFF;
 }
-.dark-mode .courses .container .table .filters .input-search-group {
+.dark-mode .courses .container .upper-content .search-categories .input-search-group {
   background-color: #151822 !important;
 }
-.dark-mode .courses .container .table .filters .input-search-group #searchQuery {
+.dark-mode .courses .container .upper-content .search-categories .input-search-group #searchQuery {
   background-color: #0B0F19 !important;
   border: 1px solid #33354D;
 }
-.dark-mode .courses .container .table .filters .input-search-group .fa-magnifying-glass {
+.dark-mode .courses .container .upper-content .search-categories .input-search-group .fa-magnifying-glass {
   color: #D4D7E5;
 }
 .dark-mode .courses .container a:hover {
@@ -2039,10 +2036,10 @@ footer .container .social-media {
   }
 }
 .courses .container .upper-content .search-categories .select {
-  min-width: 300px;
-  background-color: var(--color-gray-000);
-  border: 2px solid var(--color-gray-200);
-  color: var(--color-gray-900);
+  min-width: 220px;
+  background-color: #FFFFFF;
+  border: 2px solid #EFF2FC;
+  color: #0B0F19;
   border-radius: 6px;
   box-sizing: border-box;
 }
@@ -2051,7 +2048,7 @@ footer .container .social-media {
     position: absolute;
     right: 0;
     top: -0.5rem;
-    z-index: 9999;
+    z-index: 25;
   }
 }
 @media (min-width: 992px) {
@@ -2062,15 +2059,19 @@ footer .container .social-media {
 }
 .courses .container .upper-content .search-categories .select i {
   position: absolute;
-  right: 10px;
+  left: 195px;
   top: 12px;
+}
+@media (min-width: 992px) {
+  .courses .container .upper-content .search-categories .select i {
+    right: 10px;
+  }
 }
 .courses .container .upper-content .search-categories .select .selected {
   width: 100%;
   padding: 8px 16px;
   box-sizing: border-box;
   border-radius: 6px;
-  border: 1px solid var(--color-gray-400);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -2079,10 +2080,9 @@ footer .container .social-media {
 }
 .courses .container .upper-content .search-categories .select .select-options {
   width: 100%;
-  background-color: var(--color-gray-000);
+  background-color: #FFFFFF;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid var(--color-gray-400);
   margin: 0;
   padding: 8px 16px;
 }
@@ -2091,10 +2091,9 @@ footer .container .social-media {
   padding: 8px 16px;
   cursor: pointer;
   box-sizing: border-box;
-  border-bottom: 1px solid var(--color-gray-400);
 }
 .courses .container .upper-content .search-categories .select .select-options .option:hover {
-  background-color: var(--color-gray-100);
+  background-color: #F3F6FF;
 }
 .courses .container .upper-content .search-categories .input-search-group {
   position: relative;
@@ -2103,9 +2102,9 @@ footer .container .social-media {
 }
 .courses .container .upper-content .search-categories .input-search-group input {
   padding: 8px 16px;
-  background-color: var(--color-gray-000);
-  border: 2px solid var(--color-gray-200);
-  color: var(--color-gray-900);
+  background-color: #FFFFFF;
+  border: 2px solid #EFF2FC;
+  color: #0B0F19;
   border-radius: 6px;
   text-align: left;
   box-sizing: border-box;
@@ -2123,7 +2122,7 @@ footer .container .social-media {
   }
 }
 .courses .container .upper-content .search-categories .input-search-group input::placeholder {
-  color: var(--color-gray-900);
+  color: #0B0F19;
 }
 .courses .container .upper-content .search-categories .input-search-group input:focus {
   outline: none;
@@ -2132,6 +2131,13 @@ footer .container .social-media {
   position: absolute;
   top: 12px;
   right: 12px;
+}
+.courses .container .text-spinner {
+  display: flex;
+}
+.courses .container .text-spinner .fa-spinner {
+  margin-top: 5px;
+  margin-right: 20px;
 }
 .courses .container .course-list {
   grid-area: courses;
@@ -2164,7 +2170,7 @@ footer .container .social-media {
   z-index: 5;
   top: 10px;
   left: 10px;
-  background-color: #BCF7D2;
+  background-color: #5bc784;
   color: white !important;
   border-radius: 5px;
   padding-right: 4px;
@@ -2203,17 +2209,19 @@ footer .container .social-media {
   cursor: pointer;
 }
 .courses .container .course-list .course .fa-solid {
-  color: var(--color-theme);
+  color: #6366F1;
 }
 .courses .container .course-list .course .course-details {
   text-decoration: none;
 }
 .courses .container .course-list .course .course-details .info {
   padding: 15px;
-  background-color: var(--color-gray-000);
-  border: 0.5px solid var(--color-gray-100);
+  background-color: #FFFFFF;
+  border: 0.5px solid #F3F6FF;
 }
 .courses .container .course-list .course .course-details .info .course-title {
+  display: block;
+  height: 64px;
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -2221,7 +2229,7 @@ footer .container .social-media {
   font-weight: 800;
   color: #0B0F19;
   font-size: 20px !important;
-  color: var(--color-gray-800);
+  color: #33354D !important;
   margin-bottom: 0;
 }
 .courses .container .course-list .course .course-details .info .course-creator {
@@ -2235,7 +2243,7 @@ footer .container .social-media {
   font-weight: 900;
 }
 .courses .container .course-list .course .course-details .info .course-prices .discount-price {
-  color: #F5D7DA;
+  color: #c92464;
 }
 .courses .container .course-list .course .course-details .info .course-prices .original-price {
   color: #6366F1;
@@ -2268,18 +2276,18 @@ nav .pagination {
   font-size: 0.8rem;
 }
 nav .pagination .number {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid #F3F6FF;
   border-radius: 6px;
   padding: 10px;
   width: 40px;
   height: 40px;
   box-sizing: border-box;
-  color: var(--color-gray-900);
+  color: #0B0F19;
   text-align: center;
 }
 nav .pagination .number:hover {
-  background-color: var(--color-gray-800);
-  color: var(--color-gray-100);
+  background-color: #33354D;
+  color: #F3F6FF;
 }
 nav .pagination .active {
   background-color: #6366F1;
@@ -2332,7 +2340,8 @@ nav .pagination .active {
 }
 .course-details .img-header {
   height: 500px;
-  min-width: 70%;
+  width: 100%;
+  object-fit: cover;
   background-color: rgba(39, 42, 63, 0.476);
   z-index: -1;
   margin: 0 auto;
@@ -2343,7 +2352,8 @@ nav .pagination .active {
   display: block;
   z-index: -3;
   height: 500px;
-  min-width: 70%;
+  width: 100%;
+  object-fit: cover;
   margin: 0 auto;
 }
 .course-details .container .text-header {

@@ -3,10 +3,12 @@
 
     .img-header {
         height: 500px;
-        min-width: 70%;
+        width: 100%;
+        object-fit: cover;
         background-color: rgba(39, 42, 63, 0.476);
         z-index: -1;
         margin: 0 auto;
+
 
         img {
             position: absolute;
@@ -14,7 +16,8 @@
             display: block;
             z-index: -3;
             height: 500px;
-            min-width: 70%;
+            width: 100%;
+            object-fit: cover;
             margin: 0 auto;
         }
     }

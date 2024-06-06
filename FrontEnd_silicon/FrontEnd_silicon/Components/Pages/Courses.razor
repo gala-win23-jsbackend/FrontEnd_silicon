@@ -40,34 +40,45 @@
             <p class="courses">Courses</p>
         </div>
 
-        <div class="table">
-            <div class="header">
-                <h1 class="my5">Courses</h1>
-            </div>
+        
 
-            <div class="filters">
-                <select>
-                    <option >AllCategories</option>
-                </select>
+        <div class="upper-content">
+            <h1 class="title">Courses</h1>  
+            
 
-                <div class="browse-and-search">                
-                    <div class="input-search-group">
-                        <input id="searchQuery" class="input-group-text" name="searchQuery" placeholder="Search courses" />
-                        <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="search-categories">
+                <div class="select">
+                    <i class="fa-solid fa-angle-down"></i>
+                    <div class="selected">
+                        All categories
+                    </div>
+                    <div class="select-options d-none">
+                        <div class="option" data-value="all">All Categories</div>
                     </div>
                 </div>
-            </div>
-
+                    
+                    <div class="input-search-group">
+                        <input id="searchQuery" name="searchQuery" class="input-group-text" placeholder="Search courses" />
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>               
+            </div>        
+       
         </div>
+
 
         @if(courses == null)
         {
-            <div><i class="fa-solid fa-spinner"></i>No coursesfound yet. Please wait...</div>
+            <div class="text-spinner">
+                <i class="fa-solid fa-spinner"></i>
+               <p class="spinner-text">
+                    No courses found yet. Please wait...
+               </p>
+            </div>
 
         }
         else
         {
-            <div class="grid">
+            <div class="course-list">
                 @foreach (var course in courses)
                 {
                     var removeCourseModel = new UserCourses { UserId = user.Id, CourseId = course.Id! };
@@ -115,11 +126,11 @@
 
 
 
-                        <div> <img class="course-image" src="@course.ImageUri" /></div>
+                        <a href="@link"> <img class="course-image" src="@course.ImageUri" /></a>
                         <a class="course-details" href="@link">
                             <div class="info">
                                 <h2 class="course-title">@course.Title</h2>
-                                <p class="course-creator">by @course.Author</p>
+                                <p class="course-creator">By @course.Author</p>
                                 <div class="course-prices">
                                     @if (course.DiscountPrice > 0)
                                     {
@@ -241,7 +252,7 @@
 
                     if (response.IsSuccessStatusCode)
                     {
-                        var result = await response.Content.ReadFromJsonAsync<GraphQLResponse>();
+                        var result = await response.Content.ReadFromJsonAsync<DynamicGraphQLResponse>();
 
                         if (result?.Data.TryGetProperty("getCourses", out var coursesElement) == true)
                         {

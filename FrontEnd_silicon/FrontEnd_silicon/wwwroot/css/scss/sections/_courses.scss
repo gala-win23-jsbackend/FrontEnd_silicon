@@ -78,10 +78,10 @@
 
 
                 .select {
-                    min-width: 300px;
-                    background-color: var(--color-gray-000);
-                    border: 2px solid var(--color-gray-200);
-                    color: var(--color-gray-900);
+                    min-width: 220px;
+                    background-color: $white;
+                    border: 2px solid $gray-200;
+                    color: $gray-900;
                     border-radius: 6px;
                     box-sizing: border-box;
 
@@ -89,7 +89,7 @@
                         position: absolute;
                         right: 0;
                         top: -0.5rem;
-                        z-index: 9999;
+                        z-index: 25;
                     }
 
                     @include lg {
@@ -100,8 +100,12 @@
 
                     i {
                         position: absolute;
-                        right: 10px;
+                        left: 195px;
                         top: 12px;
+
+                        @include lg {
+                            right: 10px;
+                        }
                     }
 
                     .selected {
@@ -109,7 +113,7 @@
                         padding: 8px 16px;
                         box-sizing: border-box;
                         border-radius: 6px;
-                        border: 1px solid var(--color-gray-400);
+                        //border: 1px solid $gray-400;
                         cursor: pointer;
                         display: flex;
                         justify-content: space-between;
@@ -120,10 +124,10 @@
 
                     .select-options {
                         width: 100%;
-                        background-color: var(--color-gray-000);
+                        background-color: $white;
                         border-radius: 6px;
                         overflow: hidden;
-                        border: 1px solid var(--color-gray-400);
+                        //border: 1px solid $gray-400;
                         margin: 0;
                         padding: 8px 16px;
 
@@ -132,10 +136,10 @@
                             padding: 8px 16px;
                             cursor: pointer;
                             box-sizing: border-box;
-                            border-bottom: 1px solid var(--color-gray-400);
+                            //border-bottom: 1px solid $gray-400;
 
                             &:hover {
-                                background-color: var(--color-gray-100)
+                                background-color: $gray-100
                             }
                         }
                     }
@@ -148,9 +152,9 @@
 
                     input {
                         padding: 8px 16px;
-                        background-color: var(--color-gray-000);
-                        border: 2px solid var(--color-gray-200);
-                        color: var(--color-gray-900);
+                        background-color: $white;
+                        border: 2px solid $gray-200;
+                        color: $gray-900;
                         border-radius: 6px;
                         text-align: left;
                         box-sizing: border-box;
@@ -167,7 +171,7 @@
 
 
                         &::placeholder {
-                            color: var(--color-gray-900);
+                            color: $gray-900;
                         }
 
                         &:focus {
@@ -184,8 +188,14 @@
             }
         }
 
+        .text-spinner {
+            display: flex;
 
-
+            .fa-spinner {
+                margin-top: 5px;
+                margin-right: 20px;
+            }
+        }
 
 
         .course-list {
@@ -218,7 +228,7 @@
                     z-index: 5;
                     top: 10px;
                     left: 10px;
-                    background-color: $success;
+                    background-color: $success-dark;
                     color: white !important;
                     border-radius: 5px;
                     padding-right: 4px;
@@ -262,20 +272,24 @@
 
 
                 .fa-solid {
-                    color: var(--color-theme);
+                    color: $theme;
                 }
 
                 .course-details {
                     text-decoration: none;
 
+                   
+
                     .info {
                         padding: 15px;
-                        background-color: var(--color-gray-000);
-                        border: 0.5px solid var(--color-gray-100);
+                        background-color: $white;
+                        border: 0.5px solid $gray-100;
 
                         .course-title {
+                            display: block;
+                            height: 64px;
                             @include h5;
-                            color: var(--color-gray-800);
+                            color: $gray-800 !important;
                             margin-bottom: 0;
                         }
 
@@ -291,7 +305,7 @@
                             font-weight: 900;
 
                             .discount-price {
-                                color: $danger;
+                                color: $danger-dark;
                             }
 
                             .original-price {
@@ -338,18 +352,18 @@ nav {
         font-size: 0.8rem;
 
         .number {
-            border: 1px solid var(--color-gray-100);
+            border: 1px solid $gray-100;
             border-radius: 6px;
             padding: 10px;
             width: 40px;
             height: 40px;
             box-sizing: border-box;
-            color: var(--color-gray-900);
+            color: $gray-900;
             text-align: center;
 
             &:hover {
-                background-color: var(--color-gray-800);
-                color: var(--color-gray-100);
+                background-color: $gray-800;
+                color: $gray-100;
             }
         }
 
