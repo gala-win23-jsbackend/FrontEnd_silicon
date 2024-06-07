@@ -1,8 +1,9 @@
-﻿@using FrontEnd_silicon.Data
+@using FrontEnd_silicon.Data
 @using System.Net.Http.Headers
 @attribute [StreamRendering]
 @rendermode InteractiveServer
 @inject HttpClient Http
+
 
 @if (User == null)
 {
@@ -20,11 +21,11 @@ else
                 }
                 else
                 {
-                    <img src="/images/upload/avatar.svg" alt="default profile image">
+                    <img src="/images/uploads/avatar.jpg" alt="default profile image">
                 }
                 <EditForm enctype="multipart/form-data" Model="@uploadModel" FormName="ProfileUpload">
                     <InputFile id="uploadFile" OnChange="HandleFileSelected" name="file" hidden />
-                    <label for="uploadFile" class="btn btn-circle btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
+                    <label for="uploadFile" class="btn btn-circle btn-circle-sm"><i class="fa-solid fa-arrows-rotate"></i></label>
                 </EditForm>
             </div>
 
@@ -35,8 +36,8 @@ else
             <NavLink href="/profile/details"><button class="button btn active"><i class="fa-solid fa-gear"></i> Account Details</button></NavLink>
             <NavLink href="/profile/security"><button class="button btn"><i class="fa-solid fa-lock"></i> Security</button></NavLink>
             <NavLink href="/profile/notifications"><button class="button btn"><i class="fa-regular fa-bell"></i> Notifications</button></NavLink>
-            <NavLink href="/profile/messages"><button class="button btn"><i class="fa-regular fa-message"></i> Messages</button></NavLink>
-            <NavLink href="/profile/savedcourses"><button class="button btn"><i class="fa-regular fa-bookmark"></i> Saved Items</button></NavLink>
+            <NavLink href="/profile/chat"><button class="button btn"><i class="fa-regular fa-message"></i> Messages</button></NavLink>
+            <NavLink href="/profile/saveditems"><button class="button btn"><i class="fa-regular fa-bookmark"></i> Saved Items</button></NavLink>
             <form action="Account/Logout" method="post">
                 <AntiforgeryToken />
                 <input type="hidden" name="ReturnUrl" value="@currentUrl" />
@@ -52,7 +53,7 @@ else
 
 
 @code {
-    private string? currentUrl { get; set; }
+    private string? currentUrl;
     [Parameter]
     public ApplicationUser User { get; set; } = null!;
 
@@ -103,7 +104,7 @@ else
     {
         UserProfileModel userProfileModel = new UserProfileModel
             {
-                ProfileImage = filePath,
+                ProfileImg = filePath,
                 UserId = userId
             };
         var response = await Http.PostAsJsonAsync("https://userprovider-silicon-gala.azurewebsites.net/api/UpdateProfileImg?code=-AJhkgwmultApd85PuKzxGFXw4HkPxHUZ0M1mp0cSE72AzFusUsQdA%3D%3D", userProfileModel);
@@ -116,6 +117,7 @@ else
     public class UserProfileModel
     {
         public string UserId { get; set; } = null!;
-        public string ProfileImage { get; set; }= null!;
+        public string ProfileImg { get; set; } = null!;
     }
 }
+

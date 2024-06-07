@@ -9,33 +9,39 @@
 @inject UserDataService UserDataService
 
 
-<div class=" wrapper">
-    <FrontEnd_silicon.Components.Sections.Header/>
-    <main>
-        @Body
-    </main>
-    <FrontEnd_silicon.Components.Sections.Footer/>
-</div>
-
-       
-
-<div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-</div>
-@* @code {
-    public ApplicationUser user { get; set; }
+@code {
+    public ApplicationUser user { get; set; } = null!;
 
 
     protected override async Task OnInitializedAsync()
     {
 
-        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync;
-        if (authState.User.Identity.IsAuthenticated)
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        if (authState.User.Identity!.IsAuthenticated)
         {
             user = await UserDataService.GetUserDataAsync();
         }
 
     }
-} *@
+}
+
+    <CascadingValue Value="user">
+            <div class=" wrapper">
+                <FrontEnd_silicon.Components.Sections.Header/>
+                <main>
+                    @Body
+
+                </main>
+       
+                <FrontEnd_silicon.Components.Sections.Footer/>
+            </div>
+    </CascadingValue>
+       
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+ 
