@@ -82,10 +82,10 @@
 
 @code {
     [SupplyParameterFromQuery]
-    public string? StatusMessage { get; set; } = "";
+    public string? StatusMessage { get; set; } = null!;
 
 
-    private string? errorMessage;
+    private string? errorMessage { get; set; } = null!;
 
     [CascadingParameter]
     private HttpContext HttpContext { get; set; } = default!;

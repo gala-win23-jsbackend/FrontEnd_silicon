@@ -41,10 +41,12 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     options.Cookie.IsEssential = true;
-    options.ExpireTimeSpan = TimeSpan.FromHours(1);
-    options.SlidingExpiration = true;
+    
     options.LoginPath = "/account/register";
     options.LogoutPath = "/Account/Lockout";
+
+    options.ExpireTimeSpan = TimeSpan.FromHours(1);
+    options.SlidingExpiration = true;
 });
 
 
@@ -63,6 +65,18 @@ builder.Services.AddIdentityCore<ApplicationUser>(options =>
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
+
+
+
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("SuperAdmins", policy => policy.RequireRole("SuperAdmin"));
+    x.AddPolicy("Managers", policy => policy.RequireRole("SuperAdmin", "Manager"));
+    x.AddPolicy("Admins", policy => policy.RequireRole("SuperAdmin", "Manager", "Admin"));
+    x.AddPolicy("Users", policy => policy.RequireRole("SuperAdmin", "Manager", "Admin", "User"));
+});
+
+
 
 builder.Services.AddSingleton(s => new GraphQLHttpClient("https://courseprovider-silicon-gala.azurewebsites.net/api/graphql?code=HICWJNC7QYWfyyICw5z7E6Apvy-R_QAaGQEF6e_oahmfAzFuhgF5qQ%3D%3D", new SystemTextJsonSerializer()));
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
@@ -95,5 +109,18 @@ app.MapRazorComponents<App>()
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
+/*
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    string[] roles = ["SuperAdmin", "CIO", "Admin", "User"];
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}*/
 
 app.Run();

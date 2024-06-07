@@ -1,4 +1,13 @@
-﻿@inherits LayoutComponentBase
+﻿@using FrontEnd_silicon.Data
+@using FrontEnd_silicon.Services
+@using Microsoft.AspNetCore.Components.Authorization
+
+
+
+@inherits LayoutComponentBase
+@inject ThemeService ThemeService
+@inject UserDataService UserDataService
+
 
 <div class=" wrapper">
     <FrontEnd_silicon.Components.Sections.Header/>
@@ -15,3 +24,18 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+@* @code {
+    public ApplicationUser user { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync;
+        if (authState.User.Identity.IsAuthenticated)
+        {
+            user = await UserDataService.GetUserDataAsync();
+        }
+
+    }
+} *@

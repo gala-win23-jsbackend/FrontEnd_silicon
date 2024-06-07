@@ -352,6 +352,16 @@ h6, .h6 {
 .dark-mode .courses .container .hero #blue {
   color: #6366f1 !important;
 }
+.dark-mode #course-details .course-content .container .box-one .content .circle-gray {
+  background-color: #33354D !important;
+  box-shadow: 0 0 20px #e2e5f1 !important;
+}
+.dark-mode #course-details .course-content .container .box-one .content .circle-gray .circle-white {
+  background: #565973 !important;
+}
+.dark-mode #course-details .course-content .container .box-one .content .circle-gray .circle-white p {
+  color: #FFFFFF !important;
+}
 .dark-mode #admin-portal {
   background-color: #151822 !important;
 }
@@ -489,18 +499,6 @@ h6, .h6 {
 }
 .dark-mode #saved-courses .content .grid a:hover h2 {
   color: #0B0F19 !important;
-}
-.dark-mode #saved-courses .content .grid a .course-card-content .text-s {
-  color: #9397AD;
-}
-.dark-mode .separate-course .course-details .box-one .content .circle-gray {
-  background-color: #33354D !important;
-}
-.dark-mode .separate-course .course-details .box-one .content .circle-gray .circle-wite {
-  background-color: #565973 !important;
-}
-.dark-mode .separate-course .course-details .box-one .content .circle-gray .circle-wite p {
-  color: #FFFFFF !important;
 }
 
 .alert-danger {
@@ -2363,6 +2361,11 @@ nav .pagination .active {
   margin-bottom: 2rem;
   text-decoration: none;
 }
+@media (min-width: 992px) {
+  .course-details .container .text-header .bread-crumbs {
+    margin-bottom: 6rem;
+  }
+}
 .course-details .container .text-header .bread-crumbs a {
   margin-right: 1rem;
   color: white;
@@ -2439,9 +2442,8 @@ nav .pagination .active {
   grid-template-columns: fit-content;
   grid-template-areas: "img p" "img c";
   width: fit-content;
-  margin-top: 2rem;
+  margin-top: 1rem;
   color: #D4D7E5 !important;
-  margin-top: 10rem;
 }
 .course-details .container .text-header .title-description .creator img {
   grid-area: img;
@@ -2474,11 +2476,17 @@ nav .pagination .active {
   }
 }
 .course-details .container .content .description {
-  width: 80%;
-  margin-top: 7rem;
-  margin-bottom: 3rem;
+  display: none;
 }
 @media (min-width: 992px) {
+  .course-details .container .content .description {
+    display: block;
+    width: 80%;
+    margin-top: 7rem;
+    margin-bottom: 3rem;
+  }
+}
+@media (min-width: 1200px) {
   .course-details .container .content .description {
     margin-bottom: 9rem;
   }
@@ -2505,15 +2513,20 @@ nav .pagination .active {
   margin: 0;
 }
 .course-details .container .content .aside-info {
-  grid-area: aside;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 7rem;
-  padding: 30px;
-  height: fit-content;
-  border: 3px solid #D4D7E5;
-  border-radius: 7px;
+  display: none;
+}
+@media (min-width: 992px) {
+  .course-details .container .content .aside-info {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 7rem;
+    padding: 30px;
+    height: fit-content;
+    border: 3px solid #D4D7E5;
+    border-radius: 7px;
+  }
 }
 .course-details .container .content .aside-info .info {
   display: flex;
@@ -2542,28 +2555,27 @@ nav .pagination .active {
 .course-details .container .content .aside-info form .btn-theme-s {
   width: 100% !important;
 }
-.course-details .container .course-details .container {
+.course-details .container .course-content .container {
   display: flex;
   gap: 4rem;
 }
-.course-details .container .course-details .container .box-one {
+.course-details .container .course-content .container .box-one {
   flex: 2;
 }
-.course-details .container .course-details .container .box-one h2 {
+.course-details .container .course-content .container .box-one h2 {
   margin-top: 2rem;
-  margin-bottom: 3rem;
 }
-.course-details .container .course-details .container .box-one .content {
+.course-details .container .course-content .container .box-one .content {
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 1rem;
 }
-.course-details .container .course-details .container .box-one .content .circle-gray {
+.course-details .container .course-content .container .box-one .content .circle-gray {
   display: none;
 }
 @media (min-width: 992px) {
-  .course-details .container .course-details .container .box-one .content .circle-gray {
+  .course-details .container .course-content .container .box-one .content .circle-gray {
     z-index: -1;
     width: 80px;
     height: 80px;
@@ -2575,7 +2587,7 @@ nav .pagination .active {
     margin-bottom: 3rem;
   }
 }
-.course-details .container .course-details .container .box-one .content .circle-gray .circle-wite {
+.course-details .container .course-content .container .box-one .content .circle-gray .circle-white {
   z-index: 1;
   width: 60px;
   height: 60px;
@@ -2585,7 +2597,7 @@ nav .pagination .active {
   justify-content: center;
   align-items: center;
 }
-.course-details .container .course-details .container .box-one .content .circle-gray .circle-wite p {
+.course-details .container .course-content .container .box-one .content .circle-gray .circle-white p {
   z-index: 2;
   margin-bottom: 0;
   color: #000000;
@@ -2597,15 +2609,15 @@ nav .pagination .active {
   justify-content: center;
   align-items: center;
 }
-.course-details .container .course-details .container .box-one .content .content-text {
+.course-details .container .course-content .container .box-one .content .content-text {
   flex: 5;
   margin-bottom: 3rem;
 }
-.course-details .container .course-details .container .box-two {
+.course-details .container .course-content .container .box-two {
   display: none;
 }
 @media (min-width: 992px) {
-  .course-details .container .course-details .container .box-two {
+  .course-details .container .course-content .container .box-two {
     flex: 1;
   }
 }
@@ -3817,4 +3829,770 @@ nav .pagination .active {
 }
 .admin-courses form .btn-delete-all, .admin-courses #coursesForm .btn-delete-all {
   background-color: #D4D7E5 !important;
+}
+
+.account-details {
+  height: 100%;
+  width: 100%;
+}
+.account-details .container {
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "userinfo" "detailsform";
+  row-gap: 2rem;
+}
+@media (min-width: 992px) {
+  .account-details .container {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "userinfo detailsform";
+    gap: 1rem 5rem;
+    padding: 40px;
+  }
+}
+.account-details .container h6 {
+  color: var(--color-theme);
+}
+.account-details .container .buttons {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+.account-details .container .user {
+  grid-area: userinfo;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  border-right: 1px solid var(--color-gray-200);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+  justify-content: center;
+  background-color: var(--color-gray-200);
+  border-radius: 6px;
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  .account-details .container .user {
+    justify-content: space-around;
+  }
+}
+@media (min-width: 992px) {
+  .account-details .container .user {
+    justify-content: flex-start;
+    background-color: var(--color-white);
+    padding: 0;
+    flex-direction: column;
+  }
+}
+.account-details .container .user .info {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .account-details .container .user .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.account-details .container .user .btn-user {
+  width: 40%;
+  margin-top: 1rem;
+}
+@media (min-width: 992px) {
+  .account-details .container .user .btn-user {
+    width: 70%;
+  }
+}
+.account-details .container .user .btn-user .button {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  padding: 10px;
+  color: var(--color-gray-900);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+.account-details .container .user .btn-user .button:hover {
+  border: 1px solid var(--color-gray-700);
+}
+.account-details .container .user .btn-user .button .i {
+  margin-right: 1rem;
+  display: none;
+}
+@media (min-width: 768px) {
+  .account-details .container .user .btn-user .button .i {
+    display: inline-block;
+  }
+}
+.account-details .container .user .btn-user .active {
+  background-color: var(--color-theme);
+  color: var(--color-white);
+}
+.account-details .container .user .btn-user .signout {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.account-details .container .user .user-img {
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.account-details .container .user .user-img img {
+  border-radius: 60px;
+  object-fit: cover;
+}
+.account-details .container .user .user-img .btn-circle-sm {
+  position: absolute;
+  top: 85px;
+  right: 2px;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  padding: 4px;
+  border-radius: 50%;
+}
+.account-details .container .user .user-img .btn-circle-sm:hover {
+  color: var(--color-gray-100);
+  background-color: var(--color-gray-700);
+}
+.account-details .container .user .name {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 16px !important;
+}
+.account-details .container .user .email {
+  text-align: center;
+}
+.account-details .container .details-form {
+  grid-area: detailsform;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  padding: 10px;
+}
+@media (min-width: 992px) {
+  .account-details .container .details-form {
+    padding: 30px;
+  }
+}
+.account-details .container .details-form .title {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 24px !important;
+}
+@media (min-width: 992px) {
+  .account-details .container .details-form .title {
+    line-height: 160%;
+    font-weight: 400;
+    color: #565973;
+    font-family: "Manrope", sans-serif;
+    font-weight: 800;
+    color: #0B0F19;
+    font-size: 32px !important;
+  }
+}
+.account-details .container .details-form .optional {
+  font-weight: 300;
+  display: inline;
+}
+.account-details .container .details-form .form-basicinfo .name {
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .account-details .container .details-form .form-basicinfo .name {
+    display: flex;
+  }
+}
+.account-details .container .details-form .form-basicinfo .name .first-name {
+  width: 100%;
+}
+.account-details .container .details-form .form-basicinfo .name .last-name {
+  width: 100%;
+}
+.account-details .container .details-form .form-basicinfo .contact-info {
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .account-details .container .details-form .form-basicinfo .contact-info {
+    display: flex;
+  }
+}
+.account-details .container .details-form .form-basicinfo .contact-info .email {
+  width: 100%;
+}
+.account-details .container .details-form .form-basicinfo .contact-info .phone {
+  width: 100%;
+}
+.account-details .container .details-form .form-basicinfo textarea {
+  resize: none;
+  height: 150px;
+}
+.account-details .container .details-form .form-basicinfo ::placeholder {
+  color: var(--color-gray-400);
+}
+.account-details .container .address {
+  margin-top: 50px;
+}
+.account-details .container .address .form-address {
+  width: 100%;
+}
+.account-details .container .address .form-address .postalcode-city {
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .account-details .container .address .form-address .postalcode-city {
+    display: flex;
+  }
+}
+.account-details .container .address .form-address .postalcode-city .postalcode {
+  width: 100%;
+}
+.account-details .container .address .form-address .postalcode-city .city {
+  width: 100%;
+}
+
+.account-saveditems {
+  height: 100%;
+  width: 100%;
+}
+.account-saveditems .container {
+  padding: 40px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "userinfo" "courses";
+  row-gap: 2rem;
+}
+@media (min-width: 992px) {
+  .account-saveditems .container {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "userinfo courses";
+    gap: 1rem 5rem;
+    padding: 40px;
+  }
+}
+.account-saveditems .container h6 {
+  color: #6366F1;
+}
+.account-saveditems .container .user {
+  grid-area: userinfo;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  border-right: 1px solid var(--color-gray-200);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+  justify-content: center;
+  background-color: var(--color-gray-200);
+  border-radius: 6px;
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  .account-saveditems .container .user {
+    justify-content: space-around;
+  }
+}
+@media (min-width: 992px) {
+  .account-saveditems .container .user {
+    justify-content: flex-start;
+    background-color: var(--color-white);
+    padding: 0;
+    flex-direction: column;
+  }
+}
+.account-saveditems .container .user .info-user {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  .account-saveditems .container .user .info-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.account-saveditems .container .user .btn-user {
+  width: 40%;
+  margin-top: 1rem;
+}
+@media (min-width: 992px) {
+  .account-saveditems .container .user .btn-user {
+    width: 70%;
+  }
+}
+.account-saveditems .container .user .btn-user .button {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  padding: 10px;
+  color: var(--color-gray-900);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+.account-saveditems .container .user .btn-user .button:hover {
+  border: 1px solid var(--color-gray-700);
+}
+.account-saveditems .container .user .btn-user .button .i {
+  margin-right: 1rem;
+  display: none;
+}
+@media (min-width: 768px) {
+  .account-saveditems .container .user .btn-user .button .i {
+    display: inline-block;
+  }
+}
+.account-saveditems .container .user .btn-user .active {
+  background-color: var(--color-theme);
+  color: var(--color-white);
+}
+.account-saveditems .container .user .btn-user .signout {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.account-saveditems .container .user .user-img {
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.account-saveditems .container .user .user-img img {
+  border-radius: 60px;
+  object-fit: cover;
+}
+.account-saveditems .container .user .user-img .btn-circle-sm {
+  position: absolute;
+  top: 85px;
+  right: 2px;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  padding: 4px;
+  border-radius: 50%;
+}
+.account-saveditems .container .user .user-img .btn-circle-sm:hover {
+  color: var(--color-gray-100);
+  background-color: var(--color-gray-700);
+}
+.account-saveditems .container .user .name {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 16px !important;
+}
+.account-saveditems .container .user .email {
+  text-align: center;
+}
+.account-saveditems .container .content {
+  position: relative;
+  z-index: 0;
+}
+.account-saveditems .container .content .title-button {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.account-saveditems .container .content .title-button .btn-delete {
+  border: 0.5px solid red;
+  color: red;
+}
+.account-saveditems .container .content .title-button .btn-delete:hover {
+  background-color: red;
+  color: white;
+}
+.account-saveditems .container .content .course-list {
+  grid-area: courses;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+  .account-saveditems .container .content .course-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    position: relative;
+    z-index: -5;
+  }
+}
+.account-saveditems .container .content .course-list .course {
+  box-shadow: 0px 4px 9px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
+  text-decoration: none;
+  color: black;
+  position: relative;
+  z-index: 4;
+  max-height: min-content;
+}
+.account-saveditems .container .content .course-list .course .best-seller {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  left: 10px;
+  background-color: #BCF7D2;
+  color: white !important;
+  border-radius: 5px;
+  padding-right: 4px;
+  padding-left: 4px;
+  padding: 5px;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 12px !important;
+}
+.account-saveditems .container .content .course-list .course form .saved-item {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  right: 15px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+.account-saveditems .container .content .course-list .course .fa-solid {
+  color: var(--color-theme);
+}
+.account-saveditems .container .content .course-list .course .course-details {
+  text-decoration: none;
+}
+.account-saveditems .container .content .course-list .course .course-details .info {
+  padding: 15px;
+  background-color: var(--color-gray-000);
+  border: 0.5px solid var(--color-gray-100);
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-title {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 20px !important;
+  color: var(--color-gray-800);
+  margin-bottom: 0;
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-creator {
+  font-size: 0.8rem;
+  color: #565973;
+  margin-bottom: 1rem;
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-prices {
+  display: flex;
+  gap: 20px;
+  font-weight: 900;
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-prices .discount-price {
+  color: #F5D7DA;
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-prices .original-price {
+  color: #6366F1;
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-prices .discount {
+  color: #9397AD;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-footer {
+  display: flex;
+  font-weight: 200;
+  gap: 20px;
+  font-size: 0.8rem;
+  color: #9397AD;
+}
+.account-saveditems .container .content .course-list .course .course-details .info .course-footer .course-hours i {
+  margin-right: 5px;
+}
+
+#account-security {
+  height: 100%;
+  width: 100%;
+}
+#account-security .container {
+  padding: 20px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "userinfo" "content";
+  row-gap: 2rem;
+}
+@media (min-width: 992px) {
+  #account-security .container {
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "userinfo content";
+    gap: 1rem 5rem;
+    padding: 40px;
+  }
+}
+#account-security .container h6 {
+  color: var(--color-theme);
+}
+#account-security .container .buttons {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+#account-security .container .user {
+  grid-area: userinfo;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  border-right: 1px solid var(--color-gray-200);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+  justify-content: center;
+  background-color: var(--color-gray-200);
+  border-radius: 6px;
+  padding: 10px;
+}
+@media (min-width: 768px) {
+  #account-security .container .user {
+    justify-content: space-around;
+  }
+}
+@media (min-width: 992px) {
+  #account-security .container .user {
+    justify-content: flex-start;
+    background-color: var(--color-white);
+    padding: 0;
+    flex-direction: column;
+  }
+}
+#account-security .container .user .info {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  #account-security .container .user .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+#account-security .container .user .btn-user {
+  width: 40%;
+  margin-top: 1rem;
+}
+@media (min-width: 992px) {
+  #account-security .container .user .btn-user {
+    width: 70%;
+  }
+}
+#account-security .container .user .btn-user .button {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  padding: 10px;
+  color: var(--color-gray-900);
+  border: 1px solid transparent;
+  box-sizing: border-box;
+}
+#account-security .container .user .btn-user .button:hover {
+  border: 1px solid var(--color-gray-700);
+}
+#account-security .container .user .btn-user .button .i {
+  margin-right: 1rem;
+  display: none;
+}
+@media (min-width: 768px) {
+  #account-security .container .user .btn-user .button .i {
+    display: inline-block;
+  }
+}
+#account-security .container .user .btn-user .active {
+  background-color: var(--color-theme);
+  color: var(--color-white);
+}
+#account-security .container .user .btn-user .signout {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  display: inline-block;
+  width: 100%;
+  text-align: left;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+#account-security .container .user .user-img {
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+#account-security .container .user .user-img img {
+  border-radius: 60px;
+  object-fit: cover;
+}
+#account-security .container .user .user-img .btn-circle-sm {
+  position: absolute;
+  top: 85px;
+  right: 2px;
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  padding: 4px;
+  border-radius: 50%;
+}
+#account-security .container .user .user-img .btn-circle-sm:hover {
+  color: var(--color-gray-100);
+  background-color: var(--color-gray-700);
+}
+#account-security .container .user .name {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 16px !important;
+}
+#account-security .container .user .email {
+  text-align: center;
+}
+#account-security .container .content {
+  grid-area: content;
+}
+#account-security .container .content .message {
+  background-color: var(--color-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  color: black;
+}
+#account-security .container .content .password-form {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+}
+#account-security .container .content .password-form input::placeholder {
+  color: var(--color-gray-400);
+}
+#account-security .container .content .password-form .title {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 32px !important;
+}
+#account-security .container .content .password-form .form-password .current-password {
+  width: 50%;
+}
+#account-security .container .content .password-form .form-password .create-new-password {
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  #account-security .container .content .password-form .form-password .create-new-password {
+    display: flex;
+  }
+}
+#account-security .container .content .password-form .form-password .create-new-password .new-password {
+  width: 100%;
+}
+#account-security .container .content .password-form .form-password .create-new-password .new-password #password-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: var(--color-danger);
+}
+#account-security .container .content .password-form .form-password .create-new-password .new-password input.input-validation-error {
+  border: 2px solid var(--color-danger) !important;
+  border-radius: 0.5rem !important;
+  color: #F5D7DA;
+}
+#account-security .container .content .password-form .form-password .create-new-password .new-password span.field-validation-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: var(--color-danger);
+}
+#account-security .container .content .password-form .form-password .create-new-password .confirm-password {
+  width: 100%;
+}
+#account-security .container .content .password-form .form-password .create-new-password .confirm-password input.input-validation-error {
+  border: 2px solid var(--color-danger) !important;
+  border-radius: 0.5rem !important;
+  color: var(--color-danger);
+}
+#account-security .container .content .password-form .form-password .create-new-password .confirm-password span.field-validation-error {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: var(--color-danger);
+}
+#account-security .container .content .delete-account form .checkbox-group {
+  margin-bottom: 15px;
 }

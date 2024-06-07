@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FrontEnd_silicon.Migrations
 {
     /// <inheritdoc />
-    public partial class addsomenewcolumn : Migration
+    public partial class Addsomenewcolumn : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

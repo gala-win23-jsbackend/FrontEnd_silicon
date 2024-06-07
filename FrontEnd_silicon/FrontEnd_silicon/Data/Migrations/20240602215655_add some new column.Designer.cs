@@ -13,7 +13,7 @@ namespace FrontEnd_silicon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240602215655_add some new column")]
-    partial class addsomenewcolumn
+    partial class Addsomenewcolumn
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

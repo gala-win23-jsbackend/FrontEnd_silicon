@@ -5,7 +5,6 @@
         height: 500px;
         width: 100%;
         object-fit: cover;
-        //background-color: rgba(39, 42, 63, 0.476);
         background-color: rgba(0, 0, 0, 0.7);
         z-index: -1;
         margin: 0 auto;
@@ -35,6 +34,13 @@
                 color: $gray-400;
                 margin-bottom: 2rem;
                 text-decoration: none;
+
+                @include lg {
+                    margin-bottom: 6rem;
+                }
+
+
+
 
                 a {
                     margin-right: 1rem;
@@ -119,9 +125,9 @@
                     grid-template-columns: fit-content;
                     grid-template-areas: 'img p' 'img c';
                     width: fit-content;
-                    margin-top: 2rem;
+                    margin-top: 1rem;
                     color: $gray-400 !important;
-                    margin-top: 10rem;
+
 
                     img {
                         grid-area: img;
@@ -159,14 +165,18 @@
 
 
             .description {
-                width: 80%;
-                margin-top: 7rem;
-                margin-bottom: 3rem;
+                display: none;
 
                 @include lg {
-                    margin-bottom: 9rem;
+                    display: block;
+                    width: 80%;
+                    margin-top: 7rem;
+                    margin-bottom: 3rem;
                 }
 
+                @include xl {
+                    margin-bottom: 9rem;
+                }
 
                 p {
                     margin-right: 2rem;
@@ -197,15 +207,20 @@
             }
 
             .aside-info {
-                grid-area: aside;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                margin-top: 7rem;
-                padding: 30px;
-                height: fit-content;
-                border: 3px solid $gray-400;
-                border-radius: 7px;
+                display: none;
+
+                @include lg {
+                    grid-area: aside;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-top: 7rem;
+                    padding: 30px;
+                    height: fit-content;
+                    border: 3px solid $gray-400;
+                    border-radius: 7px;
+                }
+
 
                 .info {
                     display: flex;
@@ -244,7 +259,7 @@
             }
         }
 
-        .course-details {
+        .course-content {
             .container {
                 display: flex;
                 gap: 4rem;
@@ -254,7 +269,6 @@
 
                     h2 {
                         margin-top: 2rem;
-                        margin-bottom: 3rem;
                     }
 
                     .content {
@@ -278,7 +292,7 @@
                                 margin-bottom: 3rem;
                             }
 
-                            .circle-wite {
+                            .circle-white {
                                 z-index: 1;
                                 width: 60px;
                                 height: 60px;
