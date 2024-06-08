@@ -25,17 +25,15 @@
     }
 }
 
-    <CascadingValue Value="user">
-            <div class=" wrapper">
-                <FrontEnd_silicon.Components.Sections.Header/>
-                <main>
-                    @Body
-
-                </main>
-       
-                <FrontEnd_silicon.Components.Sections.Footer/>
-            </div>
-    </CascadingValue>
+<CascadingValue Value="user">
+    <div class="wrapper">
+        <Header User="user" />
+        <main>
+            @Body
+        </main>      
+        <Footer />
+    </div>
+</CascadingValue>
        
 
     <div id="blazor-error-ui">

@@ -43,10 +43,22 @@
                 <Authorized>
                     <a class="btn-theme" href="/signout"><i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span></a>
                     <div class="profile-img">
-                        <a href="/profile/details">
-                            <img src="/images/uploads/avatar.jpg" alt="Profile image">
 
-                        </a>
+
+                        <NavLink href="/profile/details">                        
+                           @if (User != null && User.UserProfile != null)
+                            {
+                                 <img src="@User.UserProfile.ProfileImage" alt="profile image"> 
+                                @* <img src="/images/uploads/avatar.jpg" alt="Profile image"> *@
+                            }
+                            else
+                            {
+                                <img src="/images/uploads/avatar.jpg" alt="Profile image">
+                            }
+                        </NavLink>
+
+
+
                     </div>
                 </Authorized>
 
@@ -75,10 +87,23 @@
             <AuthorizeView>
                 <Authorized>
                     <div class="profile-img">
-                        <a href="/profile/details" class="image">
+                        @* <a href="/profile/details" class="image">
                             <img src="/images/uploads/avatar.jpg" alt="Profile image">
 
-                        </a>
+                        </a> *@
+
+
+                        <NavLink href="/profile/details">
+                            @if (User != null && User.UserProfile != null)
+                            {
+                                <img src="@User.UserProfile.ProfileImage" alt="profile image">
+                                @* <img src="/images/uploads/avatar.jpg" alt="Profile image"> *@
+                            }
+                            else
+                            {
+                                <img src="/images/uploads/avatar.jpg" alt="Profile image">
+                            }
+                        </NavLink>
                     </div>
                     <a class="btn-theme" href="/account/details">Details</a>
                     <a class="btn-theme" href="/courses">Courses</a>
@@ -109,6 +134,9 @@
 
 
 @code {
+    [Parameter]
+    public ApplicationUser User { get; set; } = null!;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
