@@ -60,12 +60,12 @@
         <hr>
     </div>
 
-    <div class="delete-account">
+    <div class="delete-account" id="delete-account">
         <h6>Delete account</h6>
         <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
         <EditForm class="form" Model="DeleteAccount" FormName="Delete" OnValidSubmit="SubmitDelete">
             <DataAnnotationsValidator />
-            <div class="checkbox-group">
+            <div class="checkbox-group" id="checkbox-group">
                 <InputCheckbox @bind-Value="DeleteAccount.CheckDeleteAccount" />
                 <label>Yes, I want to delete my account.</label>
                 <ValidationMessage For="() => DeleteAccount.CheckDeleteAccount" class="text-danger" />

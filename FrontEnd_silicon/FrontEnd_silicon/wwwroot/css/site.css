@@ -775,7 +775,10 @@ a:hover {
   background: #c92464;
   color: #FFFFFF;
   border: none;
-  margin-top: 1rem;
+  padding-top: 10px;
+  padding-bottom: 13px;
+  width: 140px;
+  height: 42px;
 }
 .btn-delete:hover {
   text-decoration: none;
@@ -805,6 +808,19 @@ a:hover {
   color: #FFFFFF;
 }
 
+/*
+a.actve {
+    @include button;
+    background: $theme;
+    color: $white !important;
+    border: none;
+
+    &:hover {
+        text-decoration: none;
+        background: $gray-700;
+        color: $white;
+    }
+}*/
 form {
   width: 100%;
   display: grid;
@@ -3948,7 +3964,7 @@ nav .pagination .active {
 .account-details .container .user .btn-user .active {
   width: 100%;
   background-color: #6366F1 !important;
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   display: inline-block;
   border-radius: 6px;
 }
@@ -4131,10 +4147,24 @@ nav .pagination .active {
 }
 @media (min-width: 992px) {
   .account-saveditems .container {
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas: "userinfo courses";
+    grid-template-columns: 1fr;
+    grid-template-areas: "userinfo" "courses";
     gap: 1rem 5rem;
     padding: 40px;
+  }
+}
+.account-saveditems .container .title-button {
+  display: flex;
+}
+.account-saveditems .container .title-button form {
+  width: 50%;
+}
+.account-saveditems .container .title-button form button {
+  margin-left: 8rem;
+}
+@media (min-width: 992px) {
+  .account-saveditems .container .title-button form button {
+    margin-left: 15.5rem;
   }
 }
 .account-saveditems .container h6 {
@@ -4212,8 +4242,11 @@ nav .pagination .active {
   }
 }
 .account-saveditems .container .user .btn-user .active {
-  background-color: var(--color-theme);
-  color: var(--color-white);
+  width: 100%;
+  background-color: #6366F1 !important;
+  color: #FFFFFF !important;
+  display: inline-block;
+  border-radius: 6px;
 }
 .account-saveditems .container .user .btn-user .signout {
   line-height: 160%;
@@ -4468,6 +4501,13 @@ nav .pagination .active {
     width: 70%;
   }
 }
+#account-security .container .user .btn-user .active {
+  width: 100%;
+  background-color: #6366F1 !important;
+  color: #FFFFFF !important;
+  display: inline-block;
+  border-radius: 6px;
+}
 #account-security .container .user .btn-user .button {
   width: 100%;
   display: inline-block;
@@ -4488,10 +4528,6 @@ nav .pagination .active {
   #account-security .container .user .btn-user .button .i {
     display: inline-block;
   }
-}
-#account-security .container .user .btn-user .active {
-  background-color: #6366F1;
-  color: #FFFFFF;
 }
 #account-security .container .user .btn-user .signout {
   line-height: 160%;
@@ -4632,10 +4668,10 @@ nav .pagination .active {
   font-size: 14px !important;
   color: #F5D7DA;
 }
-#account-security .container .content .delete-account .form .checkbox-group {
+#account-security .container .content #delete-account .form #checkbox-group {
   margin-bottom: 2rem;
 }
-#account-security .container .content .delete-account .form button {
+#account-security .container .content #delete-account .form button {
   width: 19%;
   height: 41px;
   margin-top: 2rem;

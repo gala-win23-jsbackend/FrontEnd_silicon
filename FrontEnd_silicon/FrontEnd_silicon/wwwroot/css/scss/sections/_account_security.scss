@@ -78,6 +78,15 @@
                     width: 70%;
                 }
 
+                .active {
+                    width: 100%;
+                    background-color: $theme !important;
+                    color: $white !important;
+                    display: inline-block;
+                    border-radius: 6px;
+                }
+                
+
                 .button {
                     width: 100%;
                     display: inline-block;
@@ -101,10 +110,7 @@
                     }
                 }
 
-                .active {
-                    background-color: $theme;
-                    color: $white;
-                }
+
 
 
                 .signout {
@@ -249,9 +255,10 @@
                 }
             }
 
-            .delete-account {
+            #delete-account {
+
                 .form {
-                    .checkbox-group {
+                    #checkbox-group {
                         margin-bottom: 2rem;
                     }
 

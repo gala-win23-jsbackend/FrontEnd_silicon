@@ -13,12 +13,27 @@
         row-gap: 2rem;
 
         @include lg {
-            grid-template-columns: 1fr 2fr;
-            grid-template-areas: "userinfo courses";
+            grid-template-columns: 1fr;
+            grid-template-areas: "userinfo" "courses";
             gap: 1rem 5rem;
             padding: 40px;
         }
 
+        .title-button {
+            display: flex;
+
+            form {
+                width: 50%;
+
+                button {
+                    margin-left: 8rem;
+
+                    @include lg {
+                        margin-left: 15.5rem;
+                    }
+                }
+            }
+        }
 
         h6 {
             color: $theme;
@@ -93,8 +108,11 @@
                 }
 
                 .active {
-                    background-color: var(--color-theme);
-                    color: var(--color-white);
+                    width: 100%;
+                    background-color: $theme !important;
+                    color: $white !important;
+                    display: inline-block;
+                    border-radius: 6px;
                 }
 
 

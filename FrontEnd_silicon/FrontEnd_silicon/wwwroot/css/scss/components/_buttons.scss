@@ -156,7 +156,12 @@
     background: $danger-dark;
     color: $white;
     border: none;
-    margin-top: 1rem;
+    
+    padding-top: 10px;
+    padding-bottom: 13px;
+    width: 140px;
+    height: 42px;
+    
 
     &:hover {
         text-decoration: none;
@@ -188,3 +193,17 @@
         color: $white;
     }
 }
+
+/*
+a.actve {
+    @include button;
+    background: $theme;
+    color: $white !important;
+    border: none;
+
+    &:hover {
+        text-decoration: none;
+        background: $gray-700;
+        color: $white;
+    }
+}*/

@@ -43,16 +43,21 @@
                     <InputCheckbox @bind-Value="Notifications.SubscribeNewsletter" type="checkbox" id="newsletter-switch-mode" />
                     <span class="slider round"></span>
                 </label>
-                <label>Subscribe to Newsletter</label>
+                <label class="mb-1">Subscribe to Newsletter</label>                
             </div>
+            <p class="mb-3" style="margin-left: 55px;">Nec, posuere non felis duis massa vitae aliquet.</p>
+
 
             <div id="theme-switch" class="btn-switch">
                 <label class="switch" for="theme-switch-mode">
                     <InputCheckbox @bind-Value="Notifications.DarkMode" type="checkbox" id="theme-switch-mode" />
                     <span class="slider round"></span>
                 </label>
-                <label>Use Dark Mode Theme in Application</label>
+                <label class="mb-1">Use Dark Mode Theme in Application</label>                
             </div>
+            <p class="mb-5" style="margin-left: 55px;" >Tortor massa porttitor enim tristique neque fermentum sed.</p>
+
+
             @if (user != null)
             {
                 <InputText type="hidden" @bind-Value="@user.Id" />
