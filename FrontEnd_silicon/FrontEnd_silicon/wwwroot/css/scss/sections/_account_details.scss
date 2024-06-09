@@ -21,7 +21,7 @@
 
 
         h6 {
-            color: var(--color-theme);
+            color: $theme;
         }
 
         .buttons {
@@ -34,15 +34,14 @@
         .user {
             grid-area: userinfo;
             @include standard-text;
-            border-right: 1px solid var(--color-gray-200);
+            border-right: 1px solid $gray-200;
             display: flex;
             flex-direction: row;
             align-items: center;
             width: 100%;
             gap: 1.5rem;
             justify-content: center;
-            background-color: var(--color-gray-200);
-            border-radius: 6px;
+            background-color: $gray-200;
             padding: 10px;
 
             @include md {
@@ -51,7 +50,7 @@
 
             @include lg {
                 justify-content: flex-start;
-                background-color: var(--color-white);
+                background-color: $white;
                 padding: 0;
                 flex-direction: column;
             }
@@ -69,7 +68,8 @@
 
             .btn-user {
                 width: 40%;
-                margin-top: 1rem;
+
+
 
                 @include lg {
                     width: 70%;
@@ -80,12 +80,13 @@
                     display: inline-block;
                     text-align: left;
                     padding: 10px;
-                    color: var(--color-gray-900);
+                    color: $gray-900;
                     border: 1px solid transparent;
                     box-sizing: border-box;
 
+
                     &:hover {
-                        border: 1px solid var(--color-gray-700);
+                        border: 1px solid $gray-700;
                     }
 
                     .i {
@@ -99,8 +100,11 @@
                 }
 
                 .active {
-                    background-color: var(--color-theme);
-                    color: var(--color-white);
+                    width: 100%;
+                    background-color: $theme !important;
+                    color: $white;
+                    display: inline-block;
+                    border-radius: 6px;
                 }
 
                 .signout {
@@ -108,8 +112,6 @@
                     display: inline-block;
                     width: 100%;
                     text-align: left;
-                    margin-top: 1rem;
-                    margin-left: 1rem;
                 }
             }
 
@@ -121,7 +123,9 @@
                 position: relative;
 
                 img {
-                    border-radius: 60px;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: 50%;
                     object-fit: cover;
                 }
 
@@ -130,14 +134,22 @@
                     position: absolute;
                     top: 85px;
                     right: 2px;
-                    background-color: var(--color-gray-100);
-                    color: var(--color-gray-800);
+                    background-color: $gray-100;
+                    color: $gray-800;
                     padding: 4px;
                     border-radius: 50%;
+                    width: 25px;
+                    height: 25px;
 
                     &:hover {
-                        color: var(--color-gray-100);
-                        background-color: var(--color-gray-700);
+                        color: $gray-100;
+                        background-color: $gray-700;
+                    }
+
+                    .fa-arrows-rotate {
+                        position: absolute;
+                        right: 4px;
+                        top: 4px
                     }
                 }
             }
@@ -168,6 +180,14 @@
                 }
             }
 
+            .errormessage {
+                background-color: $success;
+                border-radius: 4px;
+                padding: 5px;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+
             .optional {
                 font-weight: 300;
                 display: inline;
@@ -175,6 +195,9 @@
 
 
             .form-basicinfo {
+                
+
+
 
                 .name {
                     gap: 1rem;
@@ -216,13 +239,17 @@
                 }
 
                 ::placeholder {
-                    color: var(--color-gray-400);
+                    color: $gray-400;
                 }
             }
         }
 
+        hr {
+            margin-top: 2rem;
+        }
+
         .address {
-            margin-top: 50px;
+            margin-top: 20px;
 
             .form-address {
                 width: 100%;

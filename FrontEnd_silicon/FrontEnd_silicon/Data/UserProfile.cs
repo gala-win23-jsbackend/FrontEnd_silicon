@@ -6,7 +6,9 @@ public class UserProfile
     public string FirstName { get; set; } = null!;
     public string LastName { get; set; } = null!;
 
-    public string ProfileImage { get; set; } = "avatar.svg";
-   
+    public string ProfileImage { get; set; } = "https://silicongalastorage.blob.core.windows.net/profiles/avatar.jpg";
+   // public string ProfileImage { get; set; } = null!;
+
+
     public string? Bio { get; set; }
 }

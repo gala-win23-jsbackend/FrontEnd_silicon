@@ -216,7 +216,7 @@ h6, .h6 {
   background-color: #151822 !important;
   color: #FFFFFF;
 }
-.dark-mode header, .dark-mode .features, .dark-mode .download, .dark-mode .want, .dark-mode .contact, .dark-mode .manage, .dark-mode .integrate, .dark-mode footer, .dark-mode .courses, .dark-mode #overview, .dark-mode #account-details, .dark-mode #dontWant, .dark-mode #saved-courses {
+.dark-mode header, .dark-mode .features, .dark-mode .download, .dark-mode .want, .dark-mode .contact, .dark-mode .manage, .dark-mode .integrate, .dark-mode footer, .dark-mode .courses, .dark-mode #overview, .dark-mode #dontWant, .dark-mode #saved-courses {
   background-color: #151822 !important;
 }
 .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6, .dark-mode h7, .dark-mode h8 {
@@ -252,7 +252,7 @@ h6, .h6 {
   background-color: #151822 !important;
 }
 .dark-mode header #mobil-menu .account-buttons .profile-img a img {
-  margin-left: 21px;
+  margin-left: 37px;
 }
 .dark-mode .features {
   background-color: #151822 !important;
@@ -435,35 +435,20 @@ h6, .h6 {
 .dark-mode #signup form #form-terms .checkbox-group a {
   color: #6366F1 !important;
 }
-.dark-mode #account-details aside nav a {
-  text-align: left;
-  color: #9397AD !important;
+.dark-mode .account-details .container .user {
+  background-color: #151822 !important;
 }
-.dark-mode #account-details aside nav .btn-theme-s {
-  color: #FFFFFF !important;
+.dark-mode .account-details .container .user .btn-user .button {
+  color: #F3F6FF;
 }
-@media (min-width: 992px) {
-  .dark-mode #account-details aside {
-    border-right: 0.063rem solid #33354D;
-  }
+.dark-mode .account-details .container .user .btn-user .button:hover {
+  border: 1px solid #B4B7C9;
 }
-.dark-mode #account-details .basicInfoForm .alert-danger {
-  background-color: #c92464 !important;
+.dark-mode .account-details .container .details-form .form-label {
+  color: #F3F6FF;
 }
-.dark-mode #account-details .basicInfoForm .alert-success {
-  background-color: #5bc784 !important;
-}
-.dark-mode #account-details .basicInfoForm form h5 {
-  color: #6366F1 !important;
-}
-.dark-mode #account-details .basicInfoForm form .form-buttons .btn-gray {
-  background-color: #565973 !important;
-}
-.dark-mode #account-details .addressInfoForm form h5 {
-  color: #6366F1 !important;
-}
-.dark-mode #account-details .addressInfoForm form #btn-gray {
-  background-color: #565973 !important;
+.dark-mode .account-details .container .details-form input {
+  color: #D4D7E5;
 }
 .dark-mode header.gray {
   background-color: #0B0F19 !important;
@@ -544,11 +529,6 @@ h6, .h6 {
   align-items: center;
   padding: 15px;
   border-radius: 8px;
-}
-
-.alert-danger {
-  background-color: var(--color-danger);
-  color: var(--color-gray-800);
 }
 
 a {
@@ -691,6 +671,30 @@ a:hover {
   text-decoration: none;
   background: #565973;
   color: #FFFFFF;
+}
+
+.btn-red-s {
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #c92464;
+  color: #FFFFFF;
+  padding-top: 10px;
+  padding-bottom: 13px;
+  border: none;
+  width: 101px;
+  height: 42px;
+}
+.btn-red-s:hover {
+  box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
+  text-decoration: none;
+  background: #F5D7DA;
+  color: #0B0F19;
 }
 
 .btn-switch {
@@ -1018,13 +1022,23 @@ form .validation-message.field-validation-error::after {
 }
 .header #mobil-menu .account-buttons .profile-img {
   margin-bottom: 20px;
+  width: 60px;
+  height: 60px;
 }
 .header #mobil-menu .account-buttons .profile-img a {
-  margin-left: 21px;
+  margin-left: 37px;
 }
 .header #mobil-menu .account-buttons .profile-img a img {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+@media (min-width: 1200px) {
+  .header #mobil-menu .account-buttons .profile-img a img {
+    width: 100%;
+    height: 100%;
+  }
 }
 .header #mobil-menu .account-buttons .btn-gray {
   margin-bottom: 15px;
@@ -3854,7 +3868,7 @@ nav .pagination .active {
   }
 }
 .account-details .container h6 {
-  color: var(--color-theme);
+  color: #6366F1;
 }
 .account-details .container .buttons {
   display: flex;
@@ -3868,15 +3882,14 @@ nav .pagination .active {
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  border-right: 1px solid var(--color-gray-200);
+  border-right: 1px solid #EFF2FC;
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
   gap: 1.5rem;
   justify-content: center;
-  background-color: var(--color-gray-200);
-  border-radius: 6px;
+  background-color: #EFF2FC;
   padding: 10px;
 }
 @media (min-width: 768px) {
@@ -3887,7 +3900,7 @@ nav .pagination .active {
 @media (min-width: 992px) {
   .account-details .container .user {
     justify-content: flex-start;
-    background-color: var(--color-white);
+    background-color: #FFFFFF;
     padding: 0;
     flex-direction: column;
   }
@@ -3905,7 +3918,6 @@ nav .pagination .active {
 }
 .account-details .container .user .btn-user {
   width: 40%;
-  margin-top: 1rem;
 }
 @media (min-width: 992px) {
   .account-details .container .user .btn-user {
@@ -3917,12 +3929,12 @@ nav .pagination .active {
   display: inline-block;
   text-align: left;
   padding: 10px;
-  color: var(--color-gray-900);
+  color: #0B0F19;
   border: 1px solid transparent;
   box-sizing: border-box;
 }
 .account-details .container .user .btn-user .button:hover {
-  border: 1px solid var(--color-gray-700);
+  border: 1px solid #565973;
 }
 .account-details .container .user .btn-user .button .i {
   margin-right: 1rem;
@@ -3934,8 +3946,11 @@ nav .pagination .active {
   }
 }
 .account-details .container .user .btn-user .active {
-  background-color: var(--color-theme);
-  color: var(--color-white);
+  width: 100%;
+  background-color: #6366F1 !important;
+  color: #FFFFFF;
+  display: inline-block;
+  border-radius: 6px;
 }
 .account-details .container .user .btn-user .signout {
   line-height: 160%;
@@ -3947,8 +3962,6 @@ nav .pagination .active {
   display: inline-block;
   width: 100%;
   text-align: left;
-  margin-top: 1rem;
-  margin-left: 1rem;
 }
 .account-details .container .user .user-img {
   cursor: pointer;
@@ -3958,21 +3971,30 @@ nav .pagination .active {
   position: relative;
 }
 .account-details .container .user .user-img img {
-  border-radius: 60px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   object-fit: cover;
 }
 .account-details .container .user .user-img .btn-circle-sm {
   position: absolute;
   top: 85px;
   right: 2px;
-  background-color: var(--color-gray-100);
-  color: var(--color-gray-800);
+  background-color: #F3F6FF;
+  color: #33354D;
   padding: 4px;
   border-radius: 50%;
+  width: 25px;
+  height: 25px;
 }
 .account-details .container .user .user-img .btn-circle-sm:hover {
-  color: var(--color-gray-100);
-  background-color: var(--color-gray-700);
+  color: #F3F6FF;
+  background-color: #565973;
+}
+.account-details .container .user .user-img .btn-circle-sm .fa-arrows-rotate {
+  position: absolute;
+  right: 4px;
+  top: 4px;
 }
 .account-details .container .user .name {
   line-height: 160%;
@@ -4021,6 +4043,13 @@ nav .pagination .active {
     font-size: 32px !important;
   }
 }
+.account-details .container .details-form .errormessage {
+  background-color: #BCF7D2;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
 .account-details .container .details-form .optional {
   font-weight: 300;
   display: inline;
@@ -4060,10 +4089,13 @@ nav .pagination .active {
   height: 150px;
 }
 .account-details .container .details-form .form-basicinfo ::placeholder {
-  color: var(--color-gray-400);
+  color: #D4D7E5;
+}
+.account-details .container hr {
+  margin-top: 2rem;
 }
 .account-details .container .address {
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .account-details .container .address .form-address {
   width: 100%;
@@ -4378,7 +4410,7 @@ nav .pagination .active {
   }
 }
 #account-security .container h6 {
-  color: var(--color-theme);
+  color: #6366F1;
 }
 #account-security .container .buttons {
   display: flex;
@@ -4392,14 +4424,14 @@ nav .pagination .active {
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  border-right: 1px solid var(--color-gray-200);
+  border-right: 1px solid #EFF2FC;
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
   gap: 1.5rem;
   justify-content: center;
-  background-color: var(--color-gray-200);
+  background-color: #EFF2FC;
   border-radius: 6px;
   padding: 10px;
 }
@@ -4411,7 +4443,7 @@ nav .pagination .active {
 @media (min-width: 992px) {
   #account-security .container .user {
     justify-content: flex-start;
-    background-color: var(--color-white);
+    background-color: #FFFFFF;
     padding: 0;
     flex-direction: column;
   }
@@ -4441,12 +4473,12 @@ nav .pagination .active {
   display: inline-block;
   text-align: left;
   padding: 10px;
-  color: var(--color-gray-900);
+  color: #0B0F19;
   border: 1px solid transparent;
   box-sizing: border-box;
 }
 #account-security .container .user .btn-user .button:hover {
-  border: 1px solid var(--color-gray-700);
+  border: 1px solid #565973;
 }
 #account-security .container .user .btn-user .button .i {
   margin-right: 1rem;
@@ -4458,8 +4490,8 @@ nav .pagination .active {
   }
 }
 #account-security .container .user .btn-user .active {
-  background-color: var(--color-theme);
-  color: var(--color-white);
+  background-color: #6366F1;
+  color: #FFFFFF;
 }
 #account-security .container .user .btn-user .signout {
   line-height: 160%;
@@ -4489,14 +4521,14 @@ nav .pagination .active {
   position: absolute;
   top: 85px;
   right: 2px;
-  background-color: var(--color-gray-100);
-  color: var(--color-gray-800);
+  background-color: #F3F6FF;
+  color: #33354D;
   padding: 4px;
   border-radius: 50%;
 }
 #account-security .container .user .user-img .btn-circle-sm:hover {
-  color: var(--color-gray-100);
-  background-color: var(--color-gray-700);
+  color: #F3F6FF;
+  background-color: #565973;
 }
 #account-security .container .user .name {
   line-height: 160%;
@@ -4514,7 +4546,7 @@ nav .pagination .active {
   grid-area: content;
 }
 #account-security .container .content .message {
-  background-color: var(--color-gray);
+  background-color: #D4D7E5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4531,7 +4563,7 @@ nav .pagination .active {
   color: #0B0F19;
 }
 #account-security .container .content .password-form input::placeholder {
-  color: var(--color-gray-400);
+  color: #D4D7E5;
 }
 #account-security .container .content .password-form .title {
   line-height: 160%;
@@ -4541,6 +4573,13 @@ nav .pagination .active {
   font-weight: 800;
   color: #0B0F19;
   font-size: 32px !important;
+}
+#account-security .container .content .password-form .errormessage {
+  background-color: #BCF7D2;
+  border-radius: 4px;
+  padding: 5px;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 #account-security .container .content .password-form .form-password .current-password {
   width: 50%;
@@ -4562,10 +4601,10 @@ nav .pagination .active {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: var(--color-danger);
+  color: #F5D7DA;
 }
 #account-security .container .content .password-form .form-password .create-new-password .new-password input.input-validation-error {
-  border: 2px solid var(--color-danger) !important;
+  border: 2px solid #F5D7DA !important;
   border-radius: 0.5rem !important;
   color: #F5D7DA;
 }
@@ -4575,15 +4614,15 @@ nav .pagination .active {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: var(--color-danger);
+  color: #F5D7DA;
 }
 #account-security .container .content .password-form .form-password .create-new-password .confirm-password {
   width: 100%;
 }
 #account-security .container .content .password-form .form-password .create-new-password .confirm-password input.input-validation-error {
-  border: 2px solid var(--color-danger) !important;
+  border: 2px solid #F5D7DA !important;
   border-radius: 0.5rem !important;
-  color: var(--color-danger);
+  color: #F5D7DA;
 }
 #account-security .container .content .password-form .form-password .create-new-password .confirm-password span.field-validation-error {
   line-height: 160%;
@@ -4591,8 +4630,14 @@ nav .pagination .active {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: var(--color-danger);
+  color: #F5D7DA;
 }
-#account-security .container .content .delete-account form .checkbox-group {
-  margin-bottom: 15px;
+#account-security .container .content .delete-account .form .checkbox-group {
+  margin-bottom: 2rem;
+}
+#account-security .container .content .delete-account .form button {
+  width: 19%;
+  height: 41px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }

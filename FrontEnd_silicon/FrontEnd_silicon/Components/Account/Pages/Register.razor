@@ -30,7 +30,6 @@
 
 
          <EditForm FormName="signupform" asp-route-returnUrl="@ReturnUrl"  Model="SignUpForm" OnValidSubmit="RegisterUser" method="post" novalidate> 
-        @* <EditForm FormName="signupform"  Model="SignUpForm" OnValidSubmit="RegisterUser" method="post" novalidate> *@
 
                 <DataAnnotationsValidator />
 
@@ -45,6 +44,7 @@
             }
 
             <div class="form-content">
+
                 <div id="form-firstname" class="input-group">
                     <label>First Name</label>
                     <InputText @bind-Value="SignUpForm.FirstName" autocomplete="givenname" aria-required="true" />
@@ -97,10 +97,7 @@
 
 @code {
     [SupplyParameterFromQuery]
-    public string? StatusMessage { get; set; } = "";
-
-
-
+    public string? StatusMessage { get; set; } = null!;
 
     [SupplyParameterFromQuery]
     private string? ReturnUrl { get; set; }

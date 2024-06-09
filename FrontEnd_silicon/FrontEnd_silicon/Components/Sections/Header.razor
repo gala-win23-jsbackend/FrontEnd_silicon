@@ -18,7 +18,7 @@
                 <NavLink class="menu-link" href="/#features">Features</NavLink>
                 <NavLink class="menu-link" href="/contact">Contact</NavLink>
 
-                @* <NavLink class="menu-link" href="/contactus">Contact</NavLink> *@
+                
 
                 <AuthorizeView>
                     <Authorized>
@@ -45,19 +45,30 @@
                     <div class="profile-img">
 
 
-                        <NavLink href="/profile/details">                        
-                           @if (User != null && User.UserProfile != null)
+                       @*  <NavLink href="/profile/details">                        
+                           @if ( User.UserProfile! != null)
                             {
-                                 <img src="@User.UserProfile.ProfileImage" alt="profile image"> 
-                                @* <img src="/images/uploads/avatar.jpg" alt="Profile image"> *@
+
+                                <img src="@User.UserProfile!.ProfileImage" alt="profile image">
+                                
                             }
                             else
                             {
-                                <img src="/images/uploads/avatar.jpg" alt="Profile image">
+                                <img src="https://silicongalastorage.blob.core.windows.net/profiles/avatar.jpg" alt="Profile image"> 
+                                
+                            }
+                        </NavLink> *@
+
+                        <NavLink href="/profile/details">
+                            @if (User != null && User.UserProfile != null)
+                            {
+                                <img src="@User.UserProfile.ProfileImage" alt="profile image">
+                            }
+                            else
+                            {
+                                <img src="https://silicongalastorage.blob.core.windows.net/profiles/avatar.jpg" alt="Profile image">
                             }
                         </NavLink>
-
-
 
                     </div>
                 </Authorized>
@@ -86,24 +97,34 @@
         <div class="account-buttons">
             <AuthorizeView>
                 <Authorized>
-                    <div class="profile-img">
-                        @* <a href="/profile/details" class="image">
-                            <img src="/images/uploads/avatar.jpg" alt="Profile image">
+                    <div class="profile-img">                       
 
-                        </a> *@
-
+@* 
+                        <NavLink href="/profile/details">
+                            @if (User.UserProfile!.ProfileImage != null)
+                            {
+                                <img src="@User.UserProfile!.ProfileImage" alt="profile image">
+                               
+                            }
+                            else
+                            {
+                                <img src="https://silicongalastorage.blob.core.windows.net/profiles/avatar.jpg" alt="Profile image">
+                                
+                            }
+                        </NavLink> *@
 
                         <NavLink href="/profile/details">
                             @if (User != null && User.UserProfile != null)
                             {
                                 <img src="@User.UserProfile.ProfileImage" alt="profile image">
-                                @* <img src="/images/uploads/avatar.jpg" alt="Profile image"> *@
                             }
                             else
                             {
-                                <img src="/images/uploads/avatar.jpg" alt="Profile image">
+                                <img src="https://silicongalastorage.blob.core.windows.net/profiles/avatar.jpg" alt="Profile image">
                             }
                         </NavLink>
+
+
                     </div>
                     <a class="btn-theme" href="/account/details">Details</a>
                     <a class="btn-theme" href="/courses">Courses</a>

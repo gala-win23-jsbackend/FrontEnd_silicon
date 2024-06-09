@@ -70,7 +70,7 @@
                 <label>Yes, I want to delete my account.</label>
                 <ValidationMessage For="() => DeleteAccount.CheckDeleteAccount" class="text-danger" />
             </div>
-            <button type="submit" class="button btn-red">Delete</button>
+            <button type="submit" class="button btn-red-s">Delete</button>
         </EditForm>
     </div>
 </div>
@@ -156,7 +156,7 @@
                 var response = await UserDataService.DeleteAccount(user, DeleteAccount.CheckDeleteAccount);
                 if (response)
                 {
-                    NavigationManager.NavigateTo("/logout");
+                    NavigationManager.NavigateTo("/signout");
                 }
 
             }

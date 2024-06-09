@@ -3,7 +3,7 @@
     color: $white;
 
 
-    header, .features, .download, .want, .contact, .manage, .integrate, footer, .courses, #overview, #account-details, #dontWant, #saved-courses {
+    header, .features, .download, .want, .contact, .manage, .integrate, footer, .courses, #overview, #dontWant, #saved-courses {
         background-color: #151822 !important;
     }
 
@@ -60,7 +60,7 @@
 
                     a {
                         img {
-                            margin-left: 21px;
+                            margin-left: 37px;
                         }
                     }
                 }
@@ -435,59 +435,34 @@
         }
     }
 
-    #account-details {
+    .account-details {
+        .container {
+            .user {
+                background-color: #151822 !important;
 
-        aside {
-            nav {
-                a {
-                    text-align: left;
-                    color: $gray-600 !important;
-                }
+                .btn-user {
+                    .button {
+                        color: $gray-100;
 
-                .btn-theme-s {
-                    color: $white !important;
-                }
-            }
-
-            @include lg {
-                border-right: 0.063rem solid $gray-800;
-            }
-        }
-
-        .basicInfoForm {
-            .alert-danger {
-                background-color: $danger-dark !important;
-            }
-
-            .alert-success {
-                background-color: $success-dark !important;
-            }
-
-            form {
-                h5 {
-                    color: $theme !important;
-                }
-
-                .form-buttons {
-                    .btn-gray {
-                        background-color: #565973 !important;
+                        &:hover {
+                            border: 1px solid $gray-500;
+                        }
                     }
                 }
             }
-        }
 
-        .addressInfoForm {
-            form {
-                h5 {
-                    color: $theme !important;
+            .details-form {
+                .form-label {
+                    color: $gray-100;
                 }
 
-                #btn-gray {
-                    background-color: #565973 !important;
+                input {
+                    color: $gray-400;
                 }
             }
         }
     }
+
 
     header {
         &.gray {
