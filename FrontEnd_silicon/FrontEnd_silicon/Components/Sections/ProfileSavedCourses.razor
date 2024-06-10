@@ -25,7 +25,7 @@
         }
 
         <div class="title-button">
-            <h2 class="title">Saved Items</h2>
+            <h2 class="title">Saved Courses</h2>
             <EditForm FormName="RemoveAll" OnValidSubmit="RemoveAllUserCourse" Model="userId">
                 <InputText type="hidden" name="userId" @bind-Value="@user!.Id" />
                 
@@ -166,7 +166,7 @@
         {
             StatusMessage = "All courses removed";
             StateHasChanged();
-            RedirectManager.RedirectTo("/profile/details");
+            
         }
         else
         {

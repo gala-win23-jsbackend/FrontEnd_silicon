@@ -61,8 +61,8 @@ else
             <NavLink href="/profile/details"><button class="button btn"><i class="fa-solid fa-gear"></i> Account Details</button></NavLink>
             <NavLink href="/profile/security"><button class="button btn"><i class="fa-solid fa-lock"></i> Security</button></NavLink>
             <NavLink href="/profile/notifications"><button class="button btn"><i class="fa-regular fa-bell"></i> Notifications</button></NavLink>
-            <NavLink href="/profile/chat"><button class="button btn"><i class="fa-regular fa-message"></i> Messages</button></NavLink>
-            <NavLink href="/profile/savedcourses"><button class="button btn"><i class="fa-regular fa-bookmark"></i> Saved Items</button></NavLink>
+            <NavLink href="/profile/messages"><button class="button btn"><i class="fa-regular fa-message"></i> Messages</button></NavLink>
+            <NavLink href="/profile/savedcourses"><button class="button btn"><i class="fa-regular fa-bookmark"></i> Saved Courses</button></NavLink>
             <form action="Account/Logout" method="post">
                 <AntiforgeryToken />
                 <input type="hidden" name="ReturnUrl" value="@currentUrl" />

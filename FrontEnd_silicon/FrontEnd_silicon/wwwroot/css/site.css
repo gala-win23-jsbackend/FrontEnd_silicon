@@ -493,6 +493,7 @@ h6, .h6 {
   align-items: center;
   padding: 15px;
   border-radius: 8px;
+  height: 25.6px;
 }
 
 .alert-success {
@@ -502,6 +503,7 @@ h6, .h6 {
   align-items: center;
   padding: 15px;
   border-radius: 8px;
+  height: 25.6px;
 }
 
 .alert-danger-dark {
@@ -511,6 +513,7 @@ h6, .h6 {
   align-items: center;
   padding: 15px;
   border-radius: 8px;
+  height: 25.6px;
 }
 
 .alert-success-dark {
@@ -520,6 +523,7 @@ h6, .h6 {
   align-items: center;
   padding: 15px;
   border-radius: 8px;
+  height: 25.6px;
 }
 
 .alert-warning {
@@ -529,6 +533,7 @@ h6, .h6 {
   align-items: center;
   padding: 15px;
   border-radius: 8px;
+  height: 25.6px;
 }
 
 a {
@@ -2232,7 +2237,7 @@ footer .container .social-media {
   color: #6366F1;
 }
 .courses .container .course-list .course .course-image {
-  width: 360px;
+  width: 100%;
 }
 .courses .container .course-list .course .course-details {
   text-decoration: none;
@@ -4164,7 +4169,7 @@ nav .pagination .active {
 }
 @media (min-width: 992px) {
   .account-saveditems .container .title-button form button {
-    margin-left: 23.5rem;
+    margin-left: 22.7rem;
   }
 }
 .account-saveditems .container h6 {
@@ -4341,7 +4346,7 @@ nav .pagination .active {
   z-index: 5;
   top: 10px;
   left: 10px;
-  background-color: #BCF7D2;
+  background-color: #5bc784;
   color: white !important;
   border-radius: 5px;
   padding-right: 4px;
@@ -4352,6 +4357,19 @@ nav .pagination .active {
   color: #565973;
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
+}
+.account-saveditems .container .content .course-list .course a .saved-item {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  right: 15px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid white;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 .account-saveditems .container .content .course-list .course form .saved-item {
   position: absolute;
@@ -4367,7 +4385,10 @@ nav .pagination .active {
   cursor: pointer;
 }
 .account-saveditems .container .content .course-list .course .fa-solid {
-  color: var(--color-theme);
+  color: #6366F1;
+}
+.account-saveditems .container .content .course-list .course .course-image {
+  width: 100%;
 }
 .account-saveditems .container .content .course-list .course .course-details {
   text-decoration: none;
@@ -4375,9 +4396,11 @@ nav .pagination .active {
 .account-saveditems .container .content .course-list .course .course-details .info {
   padding: 15px;
   background-color: #FFFFFF;
-  border: 0.5px solid #F3F6FF;
+  border: 0.063rem solid #F3F6FF;
 }
 .account-saveditems .container .content .course-list .course .course-details .info .course-title {
+  display: block;
+  height: 64px;
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -4399,7 +4422,7 @@ nav .pagination .active {
   font-weight: 900;
 }
 .account-saveditems .container .content .course-list .course .course-details .info .course-prices .discount-price {
-  color: #F5D7DA;
+  color: #c92464;
 }
 .account-saveditems .container .content .course-list .course .course-details .info .course-prices .original-price {
   color: #6366F1;

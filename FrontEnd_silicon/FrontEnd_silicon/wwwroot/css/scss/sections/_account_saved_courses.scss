@@ -29,7 +29,7 @@
                     margin-left: 8rem;
 
                     @include lg {
-                        margin-left: 23.5rem;
+                        margin-left: 22.7rem;
                     }
                 }
             }
@@ -212,7 +212,7 @@
                         z-index: 5;
                         top: 10px;
                         left: 10px;
-                        background-color: $success;
+                        background-color: $success-dark;
                         color: white !important;
                         border-radius: 5px;
                         padding-right: 4px;
@@ -220,6 +220,22 @@
                         padding: 5px;
                         @include standard-text;
                         font-size: 12px !important;
+                    }
+
+                    a {
+                        .saved-item {
+                            position: absolute;
+                            z-index: 5;
+                            top: 10px;
+                            right: 15px;
+                            background-color: white;
+                            border-radius: 50%;
+                            border: 1px solid white;
+                            padding-left: 0.5rem;
+                            padding-right: 0.5rem;
+                            font-size: 0.8rem;
+                            cursor: pointer;
+                        }
                     }
 
                     form {
@@ -240,18 +256,26 @@
 
 
                     .fa-solid {
-                        color: var(--color-theme);
+                        color: $theme;
+                    }
+
+                    .course-image {
+                        width: 100%;
                     }
 
                     .course-details {
                         text-decoration: none;
 
+
+
                         .info {
                             padding: 15px;
                             background-color: $white;
-                            border: 0.5px solid $gray-100;
+                            border: 0.063rem solid $gray-100;
 
                             .course-title {
+                                display: block;
+                                height: 64px;
                                 @include h5;
                                 color: $gray-800;
                                 margin-bottom: 0;
@@ -269,7 +293,7 @@
                                 font-weight: 900;
 
                                 .discount-price {
-                                    color: $danger;
+                                    color: $danger-dark;
                                 }
 
                                 .original-price {
