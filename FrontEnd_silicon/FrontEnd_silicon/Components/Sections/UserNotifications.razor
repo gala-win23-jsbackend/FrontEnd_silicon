@@ -22,19 +22,21 @@
         <h2 class="title">Notifications</h2>
 
 
-        @if (!string.IsNullOrEmpty(@statusMessage))
+        @if (!string.IsNullOrEmpty(@StatusMessage))
         {
-            <div class="errormessage">
-                @statusMessage
+            <div class="alert alert-warning" role="alert">
+                @StatusMessage
             </div>
         }
+
+
         <EditForm class="form" method="post" Model="Notifications" FormName="PreferredNotifications" OnValidSubmit="@(() => SubmitNotifications(Notifications))" novalidate>
             <DataAnnotationsValidator />
             <div class="current-password">
                 <label class="form-label">Preferred email for notifications</label>
                 <div class="mb-3">
-                    <InputText @bind-Value="Notifications.Email" type="email" class="form-control" />
-                    <ValidationMessage For="() =>Notifications.Email" class="text-danger" />
+                    <InputText @bind-Value="Notifications.PreferredEmail" type="email" class="form-control" />
+                    <ValidationMessage For="() =>Notifications.PreferredEmail" class="text-danger" />
                 </div>
             </div>
 
@@ -46,6 +48,7 @@
                 <label class="mb-1">Subscribe to Newsletter</label>                
             </div>
             <p class="mb-3" style="margin-left: 55px;">Nec, posuere non felis duis massa vitae aliquet.</p>
+
 
 
             <div id="theme-switch" class="btn-switch">
@@ -76,7 +79,7 @@
 
 @code {
     [SupplyParameterFromQuery]
-    public string statusMessage { get; set; } = null!;
+    public string? StatusMessage { get; set; } = null!;
 
     public NotificationsFormModel Notifications { get; set; } = new();
 
@@ -88,7 +91,7 @@
         [Required(ErrorMessage = "An valid email address is required")]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address", Prompt = "Enter your email address", Order = 0)]
-        public string Email { get; set; } = null!;
+        public string PreferredEmail { get; set; } = null!;
 
         [Display(Name = "Subscribe to newsletter", Order = 1)]
         public bool SubscribeNewsletter { get; set; }
@@ -107,7 +110,7 @@
 
         if (user != null && user.PreferredEmail != null)
         {
-            Notifications.Email = user.PreferredEmail;
+            Notifications.PreferredEmail = user.PreferredEmail;
             Notifications.SubscribeNewsletter = user.SubscribeNewsletter;
             Notifications.DarkMode = user.DarkMode;
         }
@@ -119,31 +122,37 @@
         {
             var notificationFormModel = new NotificationsFormModel
                 {
-                    Email = notifications.Email,
+                    PreferredEmail = notifications.PreferredEmail,
                     SubscribeNewsletter = notifications.SubscribeNewsletter,
                     DarkMode = notifications.DarkMode,
                     UserId = user.Id
                 };
 
+            
             var response = await Http.PostAsJsonAsync("https://userprovider-silicon-gala.azurewebsites.net/api/UpdateUserNotifications?code=Fxe6UTvjGaKTepoRaCDoZjUojoZU0XWA8PqQ-ghOXi4KAzFusawEHA%3D%3D", notificationFormModel);
+
+           //Funkar imte  var response = await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:Update_User_Notification"), notificationFormModel);
+          
+            
             if (response.IsSuccessStatusCode)
             {
                 var user = await response.Content.ReadFromJsonAsync<ApplicationUser>();
 
                 StateHasChanged();
+               
 
-                statusMessage = "Account notifications updated successfully.";
+                StatusMessage = "Account notifications updated successfully.";
                 return;
             }
             else
             {
-                statusMessage = "An error occured while updating the account notifications.";
+                StatusMessage = "An error occured while updating the account notifications.";
                 return;
             }
         }
         catch (Exception)
         {
-            statusMessage = "An error occured while updating the account notifications.";
+            StatusMessage = "An error occured while updating the account notifications.";
             return;
         }
     }

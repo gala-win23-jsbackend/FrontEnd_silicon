@@ -4176,14 +4176,14 @@ nav .pagination .active {
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  border-right: 1px solid var(--color-gray-200);
+  border-right: 1px solid #EFF2FC;
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
   gap: 1.5rem;
   justify-content: center;
-  background-color: var(--color-gray-200);
+  background-color: #EFF2FC;
   border-radius: 6px;
   padding: 10px;
 }
@@ -4195,7 +4195,7 @@ nav .pagination .active {
 @media (min-width: 992px) {
   .account-saveditems .container .user {
     justify-content: flex-start;
-    background-color: var(--color-white);
+    background-color: #FFFFFF;
     padding: 0;
     flex-direction: column;
   }
@@ -4225,12 +4225,12 @@ nav .pagination .active {
   display: inline-block;
   text-align: left;
   padding: 10px;
-  color: var(--color-gray-900);
+  color: #0B0F19;
   border: 1px solid transparent;
   box-sizing: border-box;
 }
 .account-saveditems .container .user .btn-user .button:hover {
-  border: 1px solid var(--color-gray-700);
+  border: 1px solid #565973;
 }
 .account-saveditems .container .user .btn-user .button .i {
   margin-right: 1rem;
@@ -4276,14 +4276,14 @@ nav .pagination .active {
   position: absolute;
   top: 85px;
   right: 2px;
-  background-color: var(--color-gray-100);
-  color: var(--color-gray-800);
+  background-color: #F3F6FF;
+  color: #33354D;
   padding: 4px;
   border-radius: 50%;
 }
 .account-saveditems .container .user .user-img .btn-circle-sm:hover {
-  color: var(--color-gray-100);
-  background-color: var(--color-gray-700);
+  color: #F3F6FF;
+  background-color: #565973;
 }
 .account-saveditems .container .user .name {
   line-height: 160%;
@@ -4374,8 +4374,8 @@ nav .pagination .active {
 }
 .account-saveditems .container .content .course-list .course .course-details .info {
   padding: 15px;
-  background-color: var(--color-gray-000);
-  border: 0.5px solid var(--color-gray-100);
+  background-color: #FFFFFF;
+  border: 0.5px solid #F3F6FF;
 }
 .account-saveditems .container .content .course-list .course .course-details .info .course-title {
   line-height: 160%;
@@ -4385,7 +4385,7 @@ nav .pagination .active {
   font-weight: 800;
   color: #0B0F19;
   font-size: 20px !important;
-  color: var(--color-gray-800);
+  color: #33354D;
   margin-bottom: 0;
 }
 .account-saveditems .container .content .course-list .course .course-details .info .course-creator {

@@ -70,67 +70,67 @@
 2{
     "query":"mutation ($input:CourseCreateRequestInput!) {createCourse(input:$input) {id title}}",
     "variables":{
-        "input":{
-            "imageUri":"https://silicongalastorage.blob.core.windows.net/courses/jmeter_9.svg",
-            "imageHeaderUri":"https://silicongalastorage.blob.core.windows.net/courses/jmeter_9.svg",
-            "isBestseller":false,
-            "isDigital":true,
-            "categories":["HTML" ],
-            "title": "HTML, CSS, JavaScript Web Developer",
-            "ingress":"Learn how to build fullstack web applications from stracth.",
-            "starRating":3.5,
-            "reviews":"1.1K",
-            "likesInProcent":"92%",
-            "likes":"3.1K",
-            "hours":"160",
-            "authors":[
-                {"name":"Jenny Wilson & Marvin McKinney"},
-              { "authorImg": "https://silicongalastorage.blob.core.windows.net/courses/mini_author.svg" }
-            ],
-            "prices":{
-                "currency":"USD",
-                "price":15.99,
-                "discount":0
+      "input": {
+        "imageUri": "https://silicongalastorage.blob.core.windows.net/courses/developer_2.svg",
+        "imageHeaderUri": "https://silicongalastorage.blob.core.windows.net/courses/developer_2.svg",
+        "isBestseller": false,
+        "isDigital": true,
+        "categories": [ "HTML" ],
+        "title": "HTML, CSS, JavaScript Web Developer",
+        "ingress": "Learn how to build fullstack web applications from stracth.",
+        "starRating": 3.5,
+        "reviews": "1.1K",
+        "likesInProcent": "92%",
+        "likes": "3.1K",
+        "hours": "160",
+        "authors": [
+          { "name": "Jenny Wilson & Marvin McKinney" },
+          { "authorImg": "https://silicongalastorage.blob.core.windows.net/courses/mini_author.svg" }
+        ],
+        "prices": {
+          "currency": "USD",
+          "price": 15.99,
+          "discount": 0
+        },
+        "content": {
+          "description": "Course Description. This course is designeed to teach you everything you need to know to become a fullstack web developer. We cover both frontend and backend tecknologies, including HTML, CSS, JavaScript and more. What you'll learn. Build complex web applications from stratch. Understand the basics of HTML, CSS and JavaScript. Develop server-side logic with Node.js. Integrate database into your web applications. Implement authentication and security in your proojects",
+          "includes": [ "148 hours on demand video", "18 articles", "25 downloadable resources", "Full lifetime access", "Certificate of completion" ],
+          "programDetails": [
+            {
+              "id": 1,
+              "title": "Introduction. Getting started",
+              "description": "Learn the basics and get started with your first project"
             },
-          "content": {
-            "description": "Course Description. This course is designeed to teach you everything you need to know to become a fullstack web developer. We cover both frontend and backend tecknologies, including HTML, CSS, JavaScript and more. What you'll learn. Build complex web applications from stratch. Understand the basics of HTML, CSS and JavaScript. Develop server-side logic with Node.js. Integrate database into your web applications. Implement authentication and security in your proojects",
-            "includes": [ "148 hours on demand video", "18 articles", "25 downloadable resources", "Full lifetime access", "Certificate of completion" ],
-            "programDetails": [
-              {
-                "id": 1,
-                "title": "Introduction. Getting started",
-                "description": "Learn the basics and get started with your first project"
-              },
-              {
-                "id": 2,
-                "title": "The ultimate HTML developer: advanced HTML",
-                "description": "Explore advanced HTML techniques and build complex web pages."
-              },
-              {
-                "id": 3,
-                "title": "CSS & CSS3: basic",
-                "description": "Basic and advanced use of CSS to design web pages."
-              },
-              {
-                "id": 4,
-                "title": "JavaScript basics for beginners",
-                "description": "Learn the fundamentials of Javascript and start proogramming integrative web applications. "
-              },
-              {
-                "id": 5,
-                "title": "Understanding APIs",
-                "description": "Understand and integrate various APIs into your projects."
-              },
-              {
-                "id": 6,
-                "title": "Python from beginner to advanced",
-                "description": "A deep dive into Python programming, from beginner to advanced level"
-              }
-            ]
-          }
-
-
+            {
+              "id": 2,
+              "title": "The ultimate HTML developer: advanced HTML",
+              "description": "Explore advanced HTML techniques and build complex web pages."
+            },
+            {
+              "id": 3,
+              "title": "CSS & CSS3: basic",
+              "description": "Basic and advanced use of CSS to design web pages."
+            },
+            {
+              "id": 4,
+              "title": "JavaScript basics for beginners",
+              "description": "Learn the fundamentials of Javascript and start proogramming integrative web applications. "
+            },
+            {
+              "id": 5,
+              "title": "Understanding APIs",
+              "description": "Understand and integrate various APIs into your projects."
+            },
+            {
+              "id": 6,
+              "title": "Python from beginner to advanced",
+              "description": "A deep dive into Python programming, from beginner to advanced level"
+            }
+          ]
         }
+
+
+      }
     }
 }
 
@@ -539,6 +539,8 @@
     }
 }
 
+
+
 9{
     "query":"mutation ($input:CourseCreateRequestInput!) {createCourse(input:$input) {id title}}",
     "variables":{
@@ -607,3 +609,145 @@
     }
 }
 
+
+
+
+
+10test {
+    "query":"mutation ($input:CourseCreateRequestInput!) {createCourse(input:$input) {id title}}",
+    "variables":{
+      "input": {
+        "imageUri": "https://silicongalastorage.blob.core.windows.net/courses/course_table.jpg",
+        "imageHeaderUri": "https://silicongalastorage.blob.core.windows.net/courses/course_table.jpg",
+        "isBestseller": false,
+        "isDigital": true,
+        "categories": [ "JavaScript " ],
+        "title": "TEST TEST10",
+        "ingress": "TEST 10",
+        "starRating": 4.1,
+        "reviews": "1.3K",
+        "likesInProcent": "92%",
+        "likes": "3.1K",
+        "hours": "160",
+        "authors": [
+          { "name": "Jenny Wilson" },
+          { "authorImg": "https://silicongalastorage.blob.core.windows.net/courses/mini_author.svg" }
+        ],
+        "prices": {
+          "currency": "USD",
+          "price": 14.50,
+          "discount": 0
+        },
+        "content": {
+          "description": "Course Description. This course is designeed to teach you everything you need to know to become a fullstack web developer. We cover both frontend and backend tecknologies, including HTML, CSS, JavaScript and more. What you'll learn. Build complex web applications from stratch. Understand the basics of HTML, CSS and JavaScript. Develop server-side logic with Node.js. Integrate database into your web applications. Implement authentication and security in your proojects",
+          "includes": [ "148 hours on demand video", "18 articles", "25 downloadable resources", "Full lifetime access", "Certificate of completion" ],
+
+          "programDetails": [
+            {
+              "id": 1,
+              "title": "Introduction. Getting started",
+              "description": "Learn the basics and get started with your first project"
+            },
+            {
+              "id": 2,
+              "title": "The ultimate HTML developer: advanced HTML",
+              "description": "Explore advanced HTML techniques and build complex web pages."
+            },
+            {
+              "id": 3,
+              "title": "CSS & CSS3: basic",
+              "description": "Basic and advanced use of CSS to design web pages."
+            },
+            {
+              "id": 4,
+              "title": "JavaScript basics for beginners",
+              "description": "Learn the fundamentials of Javascript and start proogramming integrative web applications. "
+            },
+            {
+              "id": 5,
+              "title": "Understanding APIs",
+              "description": "Understand and integrate various APIs into your projects."
+            },
+            {
+              "id": 6,
+              "title": "Python from beginner to advanced",
+              "description": "A deep dive into Python programming, from beginner to advanced level"
+            }
+          ]
+        }
+
+
+      }
+    }
+}
+
+
+
+
+11test {
+    "query":"mutation ($input:CourseCreateRequestInput!) {createCourse(input:$input) {id title}}",
+    "variables":{
+      "input": {
+        "imageUri": "https://silicongalastorage.blob.core.windows.net/courses/comp_course.jpg",
+        "imageHeaderUri": "https://silicongalastorage.blob.core.windows.net/courses/comp_course.jpg",
+        "isBestseller": false,
+        "isDigital": true,
+        "categories": [ "JavaScript " ],
+        "title": "TEST11",
+        "ingress": "TEST 11",
+        "starRating": 4.1,
+        "reviews": "1.3K",
+        "likesInProcent": "92%",
+        "likes": "3.1K",
+        "hours": "160",
+        "authors": [
+          { "name": "Jenny Wilson" },
+          { "authorImg": "https://silicongalastorage.blob.core.windows.net/courses/mini_author.svg" }
+        ],
+        "prices": {
+          "currency": "USD",
+          "price": 14.50,
+          "discount": 0
+        },
+        "content": {
+          "description": "Course Description. This course is designeed to teach you everything you need to know to become a fullstack web developer. We cover both frontend and backend tecknologies, including HTML, CSS, JavaScript and more. What you'll learn. Build complex web applications from stratch. Understand the basics of HTML, CSS and JavaScript. Develop server-side logic with Node.js. Integrate database into your web applications. Implement authentication and security in your proojects",
+          "includes": [ "148 hours on demand video", "18 articles", "25 downloadable resources", "Full lifetime access", "Certificate of completion" ],
+
+          "programDetails": [
+            {
+              "id": 1,
+              "title": "Introduction. Getting started",
+              "description": "Learn the basics and get started with your first project"
+            },
+            {
+              "id": 2,
+              "title": "The ultimate HTML developer: advanced HTML",
+              "description": "Explore advanced HTML techniques and build complex web pages."
+            },
+            {
+              "id": 3,
+              "title": "CSS & CSS3: basic",
+              "description": "Basic and advanced use of CSS to design web pages."
+            },
+            {
+              "id": 4,
+              "title": "JavaScript basics for beginners",
+              "description": "Learn the fundamentials of Javascript and start proogramming integrative web applications. "
+            },
+            {
+              "id": 5,
+              "title": "Understanding APIs",
+              "description": "Understand and integrate various APIs into your projects."
+            },
+            {
+              "id": 6,
+              "title": "Python from beginner to advanced",
+              "description": "A deep dive into Python programming, from beginner to advanced level"
+            }
+          ]
+        }
+
+
+      }
+    }
+}

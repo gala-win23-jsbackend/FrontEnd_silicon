@@ -105,7 +105,9 @@ else
 
             try
             {
-                var response = await Http.PostAsync("https://fileprovider-silicon-gala.azurewebsites.net/api/Upload?code=wshQh1tCknVn5sKPrO8A10_4iJJhzpeEQEP5CnMeFibbAzFuHa3_cg%3D%3D", content);
+               // var response = await Http.PostAsync("https://fileprovider-silicon-gala.azurewebsites.net/api/Upload?code=wshQh1tCknVn5sKPrO8A10_4iJJhzpeEQEP5CnMeFibbAzFuHa3_cg%3D%3D", content);
+                var response = await Http.PostAsync(Configuration.GetValue<string>("API:File_Upload"), content);
+
                 if (response.IsSuccessStatusCode)
                 {
                     var filePath = await response.Content.ReadAsStringAsync();
@@ -132,6 +134,9 @@ else
                 UserId = userId
             };
         var response = await Http.PostAsJsonAsync("https://userprovider-silicon-gala.azurewebsites.net/api/UpdateProfileImg?code=-AJhkgwmultApd85PuKzxGFXw4HkPxHUZ0M1mp0cSE72AzFusUsQdA%3D%3D", userProfileModel);
+       // var response = await Http.PostAsync(Configuration.GetValue<string>("API:Update_Profile_Img"), userProfileModel);
+
+        
         if (response.IsSuccessStatusCode)
         {
             return true;
