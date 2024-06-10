@@ -36,7 +36,7 @@
         .user {
             grid-area: userinfo;
             @include standard-text;
-            border-right: 1px solid $gray-200;
+            border-right: none;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -49,6 +49,7 @@
 
             @include md {
                 justify-content: space-around;
+                border-right: 1px solid $gray-500;
             }
 
             @include lg {
@@ -85,7 +86,7 @@
                     display: inline-block;
                     border-radius: 6px;
                 }
-                
+
 
                 .button {
                     width: 100%;

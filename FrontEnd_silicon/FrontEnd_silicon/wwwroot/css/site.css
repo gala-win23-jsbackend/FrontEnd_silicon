@@ -216,7 +216,7 @@ h6, .h6 {
   background-color: #151822 !important;
   color: #FFFFFF;
 }
-.dark-mode header, .dark-mode .features, .dark-mode .download, .dark-mode .want, .dark-mode .contact, .dark-mode .manage, .dark-mode .integrate, .dark-mode footer, .dark-mode .courses, .dark-mode #overview, .dark-mode #dontWant, .dark-mode #saved-courses {
+.dark-mode header, .dark-mode .features, .dark-mode .download, .dark-mode .want, .dark-mode .contact, .dark-mode .manage, .dark-mode .integrate, .dark-mode footer, .dark-mode .courses, .dark-mode #overview, .dark-mode #dontWant, .dark-mode #saved-courses, .dark-mode #card-chat {
   background-color: #151822 !important;
 }
 .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6, .dark-mode h7, .dark-mode h8 {
@@ -286,6 +286,12 @@ h6, .h6 {
   color: #6366F1 !important;
 }
 .dark-mode .manage .fa-arrow-right {
+  color: #FFFFFF !important;
+}
+.dark-mode #card-chat {
+  border: 0.063rem solid #565973;
+}
+.dark-mode #card-chat .card-header {
   color: #FFFFFF !important;
 }
 .dark-mode .download .content-info .icon a img {
@@ -3903,7 +3909,7 @@ nav .pagination .active {
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  border-right: 1px solid #EFF2FC;
+  border-right: none;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -3916,6 +3922,7 @@ nav .pagination .active {
 @media (min-width: 768px) {
   .account-details .container .user {
     justify-content: space-around;
+    border-right: 1px solid #B4B7C9;
   }
 }
 @media (min-width: 992px) {
@@ -4181,7 +4188,7 @@ nav .pagination .active {
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  border-right: 1px solid #EFF2FC;
+  border-right: none;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -4195,6 +4202,7 @@ nav .pagination .active {
 @media (min-width: 768px) {
   .account-saveditems .container .user {
     justify-content: space-around;
+    border-right: 1px solid #B4B7C9;
   }
 }
 @media (min-width: 992px) {
@@ -4480,7 +4488,7 @@ nav .pagination .active {
   font-weight: 400;
   color: #565973;
   font-family: "Manrope", sans-serif;
-  border-right: 1px solid #EFF2FC;
+  border-right: none;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -4494,6 +4502,7 @@ nav .pagination .active {
 @media (min-width: 768px) {
   #account-security .container .user {
     justify-content: space-around;
+    border-right: 1px solid #B4B7C9;
   }
 }
 @media (min-width: 992px) {
