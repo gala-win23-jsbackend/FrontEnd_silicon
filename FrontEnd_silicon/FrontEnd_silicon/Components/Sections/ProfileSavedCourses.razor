@@ -16,9 +16,12 @@
 <section class="account-saveditems">
 
     <div class="container">
-        @if (!string.IsNullOrEmpty(statusMessage))
+
+        @if (!string.IsNullOrEmpty(@StatusMessage))
         {
-            <p>@statusMessage</p>
+            <div class="alert alert-danger" role="alert">
+                @StatusMessage
+            </div>
         }
 
         <div class="title-button">
@@ -109,7 +112,8 @@
 @code {
 
 
-    private string statusMessage = string.Empty;
+    [SupplyParameterFromQuery]
+    public string? StatusMessage { get; set; } = null!;
 
     [CascadingParameter]
     public ApplicationUser user { get; set; } = new ApplicationUser();
@@ -143,13 +147,13 @@
         var response = await CourseService.RequestRemoveUserCourseAsync(userCourse);
         if (response)
         {
-            statusMessage = "Course removed";
+            StatusMessage = "Course removed";
             CourseCards = CourseCards.Where(c => c.Id != userCourse.CourseId).ToList();
             StateHasChanged();
         }
         else
         {
-            statusMessage = "Failed to remove course";
+            StatusMessage = "Failed to remove course";
         }
 
 
@@ -160,13 +164,13 @@
         var response = await CourseService.RequestRemoveAllUserCourseAsync(userId.Id);
         if (response)
         {
-            statusMessage = "All courses removed";
+            StatusMessage = "All courses removed";
             StateHasChanged();
             RedirectManager.RedirectTo("/profile/details");
         }
         else
         {
-            statusMessage = "Failed to remove courses";
+            StatusMessage = "Failed to remove courses";
         }
     }
 

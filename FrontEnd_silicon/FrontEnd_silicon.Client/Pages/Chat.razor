@@ -1,9 +1,12 @@
 ﻿@page "/profile/chat"
 @rendermode InteractiveAuto
 
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.SignalR.Client
 @inject NavigationManager NavigationManager
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@attribute [Authorize]
+
 
 <PageTitle>Chat</PageTitle>
 
@@ -61,7 +64,7 @@
     {
         public string? UserName { get; set; }
         public string? Message { get; set; }
-        public DateTime Created { get; set; }
+        public DateTime Created { get; set; } = DateTime.Now;
     }
 
     private async Task NotifyTyping()
@@ -103,7 +106,7 @@
         }
 
         connection = new HubConnectionBuilder()
-            .WithUrl(NavigationManager.ToAbsoluteUri("/profile/chat"))
+            .WithUrl(NavigationManager.ToAbsoluteUri("/chatHub"))
             .Build();
 
         connection.On<string, string, DateTime>("ReceiveMessage", (fromUser, message, dateTime) =>

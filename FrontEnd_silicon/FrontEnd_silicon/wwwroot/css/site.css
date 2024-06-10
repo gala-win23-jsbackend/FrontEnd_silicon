@@ -2232,7 +2232,7 @@ footer .container .social-media {
   color: #6366F1;
 }
 .courses .container .course-list .course .course-image {
-  width: 516px;
+  width: 360px;
 }
 .courses .container .course-list .course .course-details {
   text-decoration: none;
@@ -4164,7 +4164,7 @@ nav .pagination .active {
 }
 @media (min-width: 992px) {
   .account-saveditems .container .title-button form button {
-    margin-left: 15.5rem;
+    margin-left: 23.5rem;
   }
 }
 .account-saveditems .container h6 {

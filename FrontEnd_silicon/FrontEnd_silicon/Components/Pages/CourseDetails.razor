@@ -29,10 +29,16 @@ else
             <img src="@course.ImageUri" class="img-card" alt="">
         </div>
         <div class="container">
-            @if (!string.IsNullOrWhiteSpace(statusMessage))
+
+
+            @if (!string.IsNullOrEmpty(@StatusMessage))
             {
-                <p>@statusMessage</p>
+                <div class="alert alert-danger" role="alert">
+                    @StatusMessage
+                </div>
             }
+
+
             <div class="text-header">
                 <div class="bread-crumbs">
                     <a href="/"><i class="fa-solid fa-house"></i>Home</a>
@@ -152,7 +158,7 @@ else
     public string? courseId { get; set; }
 
     [SupplyParameterFromQuery]
-    private string statusMessage { get; set; } = null!;
+    public string? StatusMessage { get; set; } = null!;
 
     [CascadingParameter]
     public ApplicationUser user { get; set; } = null!;
@@ -180,7 +186,7 @@ else
         }
         catch (Exception)
         {
-            statusMessage = "Course not found";
+            StatusMessage = "Course not found";
         }
     }
 
@@ -196,7 +202,7 @@ else
             var result = await CourseService.RequestCreateUserCoursesAsync(userCourse);
             if (result != null)
             {
-                statusMessage = "Course added to your courses";
+                StatusMessage = "Course added to your courses";
             }
         }
     }
