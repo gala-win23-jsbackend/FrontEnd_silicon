@@ -8,8 +8,9 @@ public class ApplicationUser : IdentityUser
     public string? UserProfileId { get; set; }
     public virtual UserProfile? UserProfile { get; set; }
 
-    public DateTime? Created { get; set; }
-    public DateTime? Modified { get; set; }
+    public DateTime? Created { get; set; }=DateTime.Now;
+    public DateTime? Modified { get; set; } = DateTime.Now;
+    
 
     public string? UserAddressId { get; set; }
     public virtual UserAddress? UserAddress { get; set; }

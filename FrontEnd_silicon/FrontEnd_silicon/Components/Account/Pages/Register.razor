@@ -161,6 +161,7 @@
                 UserName = SignUpForm.Email,
                 Email = SignUpForm.Email,
                 Created = DateTime.Now,
+                Modified = DateTime.Now,
             };
 
 
@@ -176,15 +177,21 @@
             }
 
             var result = await UserManager.CreateAsync(user, SignUpForm.Password);
-
+            var roleResult = await UserManager.AddToRoleAsync(user, "User");
 
             if (result.Succeeded)
             {
+                if (!roleResult.Succeeded)
+                {
+                    StatusMessage = "Unable to register roles in account. Please try again.";
+                    return;
+                }
               
                 await Http.PostAsJsonAsync(Configuration.GetValue<string>("API:GenerateVerificationCodeHTTP"), new { Email = SignUpForm.Email });
 
                     NavigationManager.NavigateTo($"Account/RegisterConfirmation?email={user.Email}&returnUrl={ReturnUrl}");
-                
+               
+               
                 
             }
             if (!result.Succeeded)

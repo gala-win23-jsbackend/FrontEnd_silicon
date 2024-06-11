@@ -110,11 +110,11 @@ app.MapRazorComponents<App>()
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
-/*
+
 using (var scope = app.Services.CreateScope())
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    string[] roles = ["SuperAdmin", "CIO", "Admin", "User"];
+    string[] roles = ["SuperAdmin", "Manager", "Admin", "User"];
     foreach (var role in roles)
     {
         if (!await roleManager.RoleExistsAsync(role))
@@ -122,6 +122,6 @@ using (var scope = app.Services.CreateScope())
             await roleManager.CreateAsync(new IdentityRole(role));
         }
     }
-}*/
+}
 app.MapHub<ChatHub>("/chatHub");
 app.Run();
