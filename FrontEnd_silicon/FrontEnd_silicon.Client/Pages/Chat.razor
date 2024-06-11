@@ -50,6 +50,9 @@
 </div>
 
 @code {
+     [SupplyParameterFromQuery]
+    public string? StatusMessage { get; set; } = null!;
+
     private HubConnection? connection;
     private bool isConnected => connection?.State == HubConnectionState.Connected;
     private List<ChatMessage> messages = new();

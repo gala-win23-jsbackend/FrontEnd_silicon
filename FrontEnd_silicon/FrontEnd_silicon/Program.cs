@@ -2,6 +2,7 @@
 using FrontEnd_silicon.Components;
 using FrontEnd_silicon.Components.Account;
 using FrontEnd_silicon.Data;
+using FrontEnd_silicon.Hubs;
 using FrontEnd_silicon.Services;
 using GraphQL.Client.Http;
 using GraphQL.Client.Serializer.SystemTextJson;
@@ -122,5 +123,5 @@ using (var scope = app.Services.CreateScope())
         }
     }
 }*/
-
+app.MapHub<ChatHub>("/chatHub");
 app.Run();
