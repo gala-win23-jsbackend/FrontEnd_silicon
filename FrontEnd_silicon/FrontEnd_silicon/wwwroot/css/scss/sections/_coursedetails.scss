@@ -228,6 +228,11 @@
                     align-items: center;
                     margin-bottom: 0.5rem;
 
+                    .fa-trophy {
+                        color: $warning;
+                    }
+
+
                     p {
                         margin: 0;
                     }

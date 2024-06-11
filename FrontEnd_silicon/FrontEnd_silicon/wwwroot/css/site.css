@@ -2575,6 +2575,9 @@ nav .pagination .active {
   align-items: center;
   margin-bottom: 0.5rem;
 }
+.course-details .container .content .aside-info .info .fa-trophy {
+  color: #FFE8AD;
+}
 .course-details .container .content .aside-info .info p {
   margin: 0;
 }

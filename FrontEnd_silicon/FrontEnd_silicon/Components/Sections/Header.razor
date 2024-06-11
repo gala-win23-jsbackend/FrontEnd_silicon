@@ -9,7 +9,9 @@
     <div class="container">
 
 
-        <a class="logo" href="/"><img alt="Silicon" src="/images/silicone-logo-light_theme.svg" id="logo"></a>
+        <a class="logo" href="/">
+            <img alt="Silicon" src="https://silicongalastorage.blob.core.windows.net/files/silicone-logo-light_theme.svg" id="logo">
+        </a>
 
 
         <div id="menu" class=" menu-nav">
@@ -45,19 +47,6 @@
                     <div class="profile-img">
 
 
-                       @*  <NavLink href="/profile/details">                        
-                           @if ( User.UserProfile! != null)
-                            {
-
-                                <img src="@User.UserProfile!.ProfileImage" alt="profile image">
-                                
-                            }
-                            else
-                            {
-                                <img src="https://silicongalastorage.blob.core.windows.net/profiles/avatar.jpg" alt="Profile image"> 
-                                
-                            }
-                        </NavLink> *@
 
                         <NavLink href="/profile/details">
                             @if (User != null && User.UserProfile != null)
@@ -99,19 +88,7 @@
                 <Authorized>
                     <div class="profile-img">                       
 
-@* 
-                        <NavLink href="/profile/details">
-                            @if (User.UserProfile!.ProfileImage != null)
-                            {
-                                <img src="@User.UserProfile!.ProfileImage" alt="profile image">
-                               
-                            }
-                            else
-                            {
-                                <img src="https://silicongalastorage.blob.core.windows.net/profiles/avatar.jpg" alt="Profile image">
-                                
-                            }
-                        </NavLink> *@
+
 
                         <NavLink href="/profile/details">
                             @if (User != null && User.UserProfile != null)

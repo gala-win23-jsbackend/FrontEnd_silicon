@@ -5,11 +5,11 @@ const imgGet = document.getElementById('illustration');
 
 
 const body = document.body;
-var logoUrlLight = '/images/silicone-logo-light_theme.svg';
-var logoUrlDark = '/images/silicone-logo-dark_theme.svg';
+var logoUrlLight = 'https://silicongalastorage.blob.core.windows.net/files/silicone-logo-light_theme.svg';
+var logoUrlDark = 'https://silicongalastorage.blob.core.windows.net/files/silicone-logo-dark_theme.svg';
 
-var imageGetCourses = '/images/courses/illustration.svg';
-var imageGetCoursesDark = '/images/courses/illustration_dark.png';
+var imageGetCourses = 'https://silicongalastorage.blob.core.windows.net/courses/illustration.svg';
+var imageGetCoursesDark = 'https://silicongalastorage.blob.core.windows.net/courses/illustration_dark_small.png';
 const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
 if (isDarkMode) {
