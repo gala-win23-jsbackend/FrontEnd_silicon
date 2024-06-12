@@ -177,7 +177,7 @@
             }
 
             var result = await UserManager.CreateAsync(user, SignUpForm.Password);
-            var roleResult = await UserManager.AddToRoleAsync(user, "User");
+            var roleResult = await UserManager.AddToRoleAsync(user, "Manager");
 
             if (result.Succeeded)
             {
