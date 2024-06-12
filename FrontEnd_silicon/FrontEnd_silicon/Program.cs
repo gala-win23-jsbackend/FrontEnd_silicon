@@ -37,6 +37,19 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
+// Jag vet inte varför , men det funkar inte
+//builder.Services.AddAuthentication().AddFacebook(options =>
+//{
+//    options.AppId = builder.Configuration["FacebookId"]!;
+//    options.AppSecret = builder.Configuration["FacebookSecret"]!;
+//});
+
+//builder.Services.AddAuthentication().AddGoogle(options =>
+//{
+//    options.ClientId = builder.Configuration["GoogleClientId"]!;
+//    options.ClientSecret = builder.Configuration["GoogleClientSecret"]!;
+//});
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.HttpOnly = true;

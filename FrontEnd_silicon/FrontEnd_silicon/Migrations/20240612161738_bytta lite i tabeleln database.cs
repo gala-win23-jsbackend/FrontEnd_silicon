@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FrontEnd_silicon.Migrations
 {
     /// <inheritdoc />
-    public partial class Addanotherdatabase : Migration
+    public partial class byttaliteitabelelndatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

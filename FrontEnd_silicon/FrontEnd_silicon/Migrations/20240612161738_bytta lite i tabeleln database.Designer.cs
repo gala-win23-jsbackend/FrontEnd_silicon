@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FrontEnd_silicon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240612153220_Add another database")]
-    partial class Addanotherdatabase
+    [Migration("20240612161738_bytta lite i tabeleln database")]
+    partial class byttaliteitabelelndatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
