@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FrontEnd_silicon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240602215655_add some new column")]
-    partial class Addsomenewcolumn
+    [Migration("20240612153220_Add another database")]
+    partial class Addanotherdatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,10 +88,7 @@ namespace FrontEnd_silicon.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserAddressId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UserAddressId1")
+                    b.Property<int?>("UserAddressId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -111,7 +108,7 @@ namespace FrontEnd_silicon.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("UserAddressId1");
+                    b.HasIndex("UserAddressId");
 
                     b.HasIndex("UserProfileId");
 
@@ -325,7 +322,7 @@ namespace FrontEnd_silicon.Migrations
                 {
                     b.HasOne("FrontEnd_silicon.Data.UserAddress", "UserAddress")
                         .WithMany()
-                        .HasForeignKey("UserAddressId1");
+                        .HasForeignKey("UserAddressId");
 
                     b.HasOne("FrontEnd_silicon.Data.UserProfile", "UserProfile")
                         .WithMany()
